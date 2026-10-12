@@ -114,3 +114,11 @@ On small screens, prioritize the active report. Company navigation, sources, and
 - Synthesis creates an attributed source compilation for subsequent agent refinement, rather than generating conclusions itself.
 
 Build the report workspace first. Its minimum useful flow is company list → current report → updated revision → comparison → super report with source relationships.
+
+## Implemented report and synchronization controls
+
+Preserve the industrial print identity and independent scrolling panes. Functional text has an 11px minimum. The header Git status opens explicit remote check, reviewed commit/push, and clean fast-forward pull. On the static viewer, replace write controls with the published-library state and show the export instant separately from research dates.
+
+Revision editing is a main-pane task: inherited dates, one revised file or full pasted Markdown, recoverable browser drafts, required change summary, date callouts, and a word-level review before saving. Stale drafts need deliberate review against the latest saved revision. New-report versus revise-existing intent remains explicit in Import Markdown. Search can include bodies and labeled historical revision matches. Inline changes use both text decoration and color; large changes may be grouped to bound work.
+
+Synthesis assembles exact source revisions. Copy its structured packet to any agent; do not present unassessed agreements/contradictions as conclusions. Mixed source dates remain distinct. An effective compilation date is optional and explicit; actual save time never implies current evidence.

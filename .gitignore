@@ -12,6 +12,7 @@ Thumbs.db
 *.p12
 *.pfx
 *.bundle
+dist/
 
 # Installed skills and agent runtime settings belong to each device.
 .agents/skills/

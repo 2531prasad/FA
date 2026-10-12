@@ -8,7 +8,7 @@ npm start
 
 Open **http://127.0.0.1:4310**. The server binds to loopback only. No accounts, cloud service, API key, or package installation are needed.
 
-The app and complete report library are versioned together in the private [2531prasad/FA](https://github.com/2531prasad/FA) GitHub repository. See [SYNC.md](SYNC.md) for cloning onto another device and synchronizing changes. Running the app stays local; GitHub stores the committed files. Reports do not sync automatically.
+The app and complete report library are versioned together in the public [2531prasad/FA](https://github.com/2531prasad/FA) GitHub repository. See [SYNC.md](SYNC.md) for cloning onto another device and synchronizing changes. The [published viewer](https://2531prasad.github.io/FA/) includes the owner-approved active reports and their revisions. Editing runs locally; the hosted viewer is read-only. Reports do not sync automatically.
 
 New data directories start empty. The active library contains the user's two imported AI-position reports; generated examples have been removed from the library and automatic sample seeding has been removed.
 
@@ -18,11 +18,13 @@ Use **Import Markdown** to drop multiple files or paste a complete AI output. Yo
 
 The left library and right context pane stay in place while the report scrolls. Each has its own scroll region. Use **Library** and **Context** in the top bar, or each pane's arrow, to hide and reopen them. Your choices persist across reloads, with separate preferences for desktop and narrow screens.
 
-1. Read a report and use **Edit & revise** to save a new version.
+1. Use **Edit & revise**, drop one revised file onto the report, or paste Markdown while reading it. The editor inherits dates, suggests file metadata, saves browser drafts, and previews date and word changes before saving. **Import Markdown** explicitly offers independent reports or an existing report to revise.
 2. Open **Timeline** for research dates and recorded history, or **Revisions** to inspect historical content and date changes.
 3. Select two or more reports in **Compare reports** for side-by-side reading.
 4. Use **Create super report** to compile exact source revisions into a new document.
-5. Ask your terminal agent to reconcile the compilation and publish a refined revision.
+5. Copy its **synthesis packet** from the context pane. Ask any agent to reconcile its pinned sources, then save the complete Markdown as a revision.
+
+Enable **Search report bodies** to search content. **Include historical revisions** labels and opens matches at the exact revision. **Show inline changes** displays additions and deletions from the preceding revision. Browser drafts are specific to this browser and are not Git-synced. A stale recovered draft must be deliberately reviewed against the latest report.
 
 Synthesis in this prototype is an attributed source compilation. It does not call an AI model or invent a reconciled conclusion. Original reports remain intact. The UI flags a super report when its sources advance.
 
@@ -66,13 +68,28 @@ Dates are separate from save timestamps:
 - `marketDate`: the date of the quoted market-price snapshots, as a calendar date.
 - Revision `createdAt`: the actual UTC instant of a local creation, import, or save. The UI displays exact times in Asia/Kolkata (IST).
 
-Unknown dates display **Not recorded**. They are not replaced by the import date. Calendar dates are validated, and cutoff/market dates cannot follow the report date. Changes to dates create a new revision; older revisions retain their earlier date context. Compilations pin each source revision's dates. Their shared information cutoff is conservatively the oldest supplied source cutoff; each source's full date context remains visible.
+Unknown dates display **Not recorded**. They are not replaced by the import date. Calendar dates are validated, and cutoff/market dates cannot follow the report date. Changes to dates create a new revision; older revisions retain their earlier date context. Compilations pin each source revision's dates. They inherit cutoff or market dates only when every source has the same known value. Mixed dates remain distinct in the synthesis packet, with coverage ranges and missing-date flags. Set the effective compilation report date explicitly or leave it unknown; the actual compilation time is separate.
 
 The two original reports were found in the connected **Thesis Ledger** plugin with report dates of **12 October 2026**. Their full bodies match the locally imported originals. Read-only ledger snapshots preserve the original **12 October IST** import records separately from the **13 October IST** local imports. Both source documents identify a **11 October** information cutoff and **9 October** price snapshots.
 
 `data/ledger-source-snapshot.json` contains the captured ledger reports and history. The local UI uses that snapshot, not a live connector; it never writes back to Thesis Ledger. Date metadata added later has its own recorded event. The original reports and revision-1 bodies remain unchanged. Previous local files and generated examples were retained under `data/archive/` as a recovery copy, outside the active library.
 
 The timeline orders research milestones by calendar day and recorded events by exact timestamp. Date-only research milestones deliberately have no ordering within a day.
+
+## GitHub Pages
+
+```powershell
+# App-only export (default).
+npm run build:pages
+# Active reports, complete revisions and provenance.
+npm run build:pages -- --include-reports
+```
+
+`dist/` is generated and ignored. Relative URLs work under `/FA/`. The build packages the app, shared browser modules, template, fonts, runtime configuration, and active report export. Recovery archives, original import files, credentials, and the standalone Ledger snapshot are not copied. Active reports may contain their own Ledger provenance metadata.
+
+`.github/workflows/pages.yml` tests, builds, and deploys on pushes to main. Pages uses **GitHub Actions** as its source. Repository Actions variable `FA_PAGES_INCLUDE_REPORTS=true` enables the owner-approved report export; absent or other values publish an empty library. The source repository and hosted report export are public, as approved by the owner. Saving locally does not update Pages: commit, push, and allow deployment to finish.
+
+The hosted viewer supports reading, timelines, comparisons, body/historical search, differences, export, and copying agent/synthesis handoffs. It rejects writes and does not call server endpoints. Use a local clone for editing and Git synchronization.
 
 ## Configuration and checks
 

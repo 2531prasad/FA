@@ -28,10 +28,13 @@ FA is a local, provider-independent financial-research workspace. These instruct
 ## App development
 
 - Plain HTML/CSS/JavaScript with Node 20+ built-ins; no dependency installation is needed.
-- `server.mjs` serves the UI and API; `lib/store.mjs` owns persistence; `public/` contains the UI.
+- `server.mjs` serves the local UI/API; `lib/store.mjs` owns persistence; `public/` contains the UI; `shared/` contains browser-safe modules. `scripts/build-pages.mjs` builds the hosted viewer. Keep module and asset URLs relative for subpath hosting.
 - Use `npm test` for changes to persistence, imports, dates, or revisions. Run `node --check` on changed JavaScript.
 - Keep the industrial print design, plain operational copy, clear date context, and independently scrollable, hideable sidebars.
-- Personal reports, complete revision history, original imports, and the Ledger snapshot under `data/` are intentionally tracked in the private Git repository. Never add credentials or device-specific settings.
-- Read `SYNC.md` before switching devices. Stop the server before pulling, switching branches, or resolving report conflicts. Pull with `--ff-only`; never force-push or automatically merge competing report histories.
+- Personal reports, complete revision history, original imports, and the Ledger snapshot under `data/` are intentionally tracked in the public Git repository. Never add credentials or device-specific settings.
+- Read `SYNC.md` before switching devices. UI Git operations serialize with report writes. Stop the server before terminal Git operations, switching branches, or resolving report conflicts. Pull with `--ff-only`; never force-push or automatically merge competing report histories.
 - Use the server/CLI for report writes; never edit report JSON concurrently with the running server. Git synchronization is explicit, not automatic.
-- Keep existing user reports intact. Do not add demo research or publish this local app externally.
+- Keep existing user reports intact. Do not add demo research. The owner explicitly approved publishing the active reports through GitHub Pages on 13 October 2026. The owner confirmed leaving the source repository public on 13 October 2026. Keep the hosted viewer read-only; export through the dedicated build.
+
+- A compilation assembles sources; it is not completed AI reconciliation. `GET /api/reports/REPORT_ID/synthesis-packet` returns pinned bodies, date boundaries and versioned instructions. Agreements and contradictions remain unassessed until an agent reviews evidence.
+- Never assign a new effective date automatically. Compilations inherit cutoff/market dates only when all source values are known and identical; otherwise preserve distinct dates in the packet.

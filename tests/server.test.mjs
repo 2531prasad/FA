@@ -18,8 +18,12 @@ test('HTTP workflow and terminal CLI persist edits and reject stale writes',asyn
   const request=async(route,body)=>fetch(url+route,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});
   const page=await request('/');assert.equal(page.status,200);assert.match(await page.text(),/Research library/);assert.match(page.headers.get('content-security-policy'),/frame-ancestors 'none'/);
   assert.deepEqual(await (await request('/api/reports')).json(),[]);
+  assert.deepEqual(await (await request('/runtime.json')).json(),{mode:'local',readOnly:false});
+  assert.equal((await (await request('/api/sync/status')).json()).writeEnabled,false);
+  assert.equal((await request('/api/sync/preview',{})).status,400);
   const result=await request('/api/reports',{company:'Terminal test',ticker:'TERM',title:'A persistent thesis',content:'## Thesis\nInitial.'});assert.equal(result.status,201);const report=await result.json();
   const edit=await request(`/api/reports/${report.id}/revisions`,{baseRevision:1,content:'## Thesis\nRefined.',summary:'Refined thesis.'});assert.equal(edit.status,200);
+  assert.equal((await request(`/api/reports/${report.id}/synthesis-packet`)).status,400);
   const stale=await request(`/api/reports/${report.id}/revisions`,{baseRevision:1,content:'Stale.',summary:'Stale edit.'});assert.equal(stale.status,409);
   const cli=spawn(process.execPath,['scripts/report.mjs','list'],{cwd:root,env:{...process.env,FA_URL:url},stdio:['ignore','pipe','pipe'],windowsHide:true});let output='';cli.stdout.on('data',chunk=>output+=chunk);const code=await new Promise((resolve,reject)=>{cli.on('error',reject);cli.on('exit',resolve);});assert.equal(code,0);assert.match(output,/A persistent thesis/);
   const saved=await (await request(`/api/reports/${report.id}`)).json();assert.equal(saved.revisions.length,2);assert.equal(saved.revisions[1].content,'## Thesis\nRefined.');
@@ -27,7 +31,7 @@ test('HTTP workflow and terminal CLI persist edits and reject stale writes',asyn
   const publisher=spawn(process.execPath,['scripts/report.mjs','revise',report.id,markdownFile,'--base','2','--summary','Agent refined the thesis.'],{cwd:root,env:{...process.env,FA_URL:url},stdio:['ignore','pipe','pipe'],windowsHide:true});
   let published='';publisher.stdout.on('data',chunk=>published+=chunk);assert.equal(await new Promise((resolve,reject)=>{publisher.on('error',reject);publisher.on('exit',resolve);}),0);assert.match(published,/revision 3/);
   const updated=await (await request(`/api/reports/${report.id}`)).json();assert.equal(updated.revisions[2].content,'## Thesis\nPublished from a terminal agent.');
-  for(const asset of ['/importer.js','/markdown-import.js','/chronology.mjs','/report-template.md'])assert.equal((await request(asset)).status,200);
+  for(const asset of ['/importer.js','/markdown-import.js','/chronology.mjs','/report-template.md','/data-client.js','/revision-editor.js','/sync-view.js','/shared/chronology.mjs','/shared/synthesis.mjs','/shared/diff.mjs','/shared/search.mjs','/shared/drafts.mjs']){const response=await request(asset);assert.equal(response.status,200);if(/\.(js|mjs)$/.test(asset))assert.match(response.headers.get('content-type'),/javascript/);}
   const importedContent='---\ntitle: AI output\nquery: Provider-neutral question\nreport_date: 2026-10-12\nagent: Claude\n---\n# Thesis\n'+ '\u20b9\u{1f4ca}'.repeat(22000);
   const payload=Buffer.from(JSON.stringify({content:importedContent}));
   // Split inside a multibyte currency character to exercise streaming UTF-8 decoding.

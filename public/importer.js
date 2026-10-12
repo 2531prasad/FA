@@ -1,9 +1,9 @@
-import { inspectMarkdown, MAX_FILE_BYTES, MAX_REPORT_CHARACTERS } from '/markdown-import.js';
-import { validateDates } from '/chronology.js';
-import { groupKey, groupName } from '/groups.js';
+import { inspectMarkdown, MAX_FILE_BYTES, MAX_REPORT_CHARACTERS } from './shared/markdown-import.mjs';
+import { validateDates } from './shared/chronology.mjs';
+import { groupKey, groupName } from './shared/groups.mjs';
 
-export function createMarkdownImporter({api,escape,markdown,getReports,getActive,open,onComplete}) {
-  const state={files:[],paste:null,pasteText:'',destination:null,newQuery:'',agent:'',busy:false,reading:false,status:'',readErrors:[],touched:new Set()};
+export function createMarkdownImporter({api,escape,markdown,getReports,getActive,open,onComplete,onRevise,isReadOnly=()=>false}) {
+  const state={files:[],paste:null,pasteText:'',destination:null,newQuery:'',agent:'',intent:'new',targetId:'',busy:false,reading:false,status:'',readErrors:[],touched:new Set()};
   const dateLabels=[['reportDate','Report date'],['informationCutoff','Information cutoff'],['marketDate','Market prices as of']];
   function destination(){const groups=new Map(getReports().map(r=>[groupKey(r),r]));if(state.destination===null)state.destination=getActive()?groupKey(getActive()):(groups.keys().next().value || '');return {groups,selected:groups.get(state.destination)};}
   function drafts(){return [...state.files,...(state.paste?[state.paste]:[])];}
@@ -11,12 +11,13 @@ export function createMarkdownImporter({api,escape,markdown,getReports,getActive
   function fields(draft){return `<section class="import-draft" data-draft="${draft.id}"><div class="import-draft-heading"><strong>${escape(draft.filename || 'Pasted Markdown')}</strong>${draft.originalFile?`<button class="text-button" type="button" data-import-action="remove" data-draft-id="${draft.id}">Remove</button>`:''}</div><label class="field">Report title<input data-draft-field="title" data-draft-id="${draft.id}" required maxlength="200" value="${escape(draft.title)}"></label><div class="date-fields">${dateLabels.map(([key,label])=>`<label class="field">${label}<input type="date" data-draft-field="${key}" data-draft-id="${draft.id}" value="${escape(draft.dates[key] || '')}"></label>`).join('')}</div><p class="form-note">${draft.content.length.toLocaleString()} characters${draft.agent?` / source: ${escape(draft.agent)}`:''}. Blank dates remain unrecorded.</p><p class="form-error" data-draft-error="${draft.id}" role="alert">${escape(draft.error)}</p><details class="import-preview"><summary>Preview report</summary><div class="report-body">${markdown(draft.content,`preview-${draft.id}`)}</div></details></section>`;}
   function render(){
     const {groups}=destination();
-    return `<section class="view-content import-view"><div class="view-heading"><h1>Import Markdown</h1><button class="text-button" type="button" data-action="view" data-view="report">Back to report</button></div><form id="markdown-import-form"><div class="import-destination"><label class="field">Add reports to<select id="import-destination">${[...groups].map(([key,report])=>`<option value="${escape(key)}" ${state.destination===key?'selected':''}>${escape(groupName(report))}</option>`).join('')}<option value="" ${state.destination===''?'selected':''}>New research query</option></select></label><label id="new-query-field" class="field" ${state.destination!==''?'hidden':''}>Research query<input id="import-query" maxlength="200" value="${escape(state.newQuery)}" ${state.destination===''?'required':''} placeholder="The question these reports answer"></label><label class="field">Source / agent (optional)<input id="import-agent" maxlength="100" value="${escape(state.agent)}" placeholder="Claude, Gemini, Codex, or another source"></label></div><div class="dropzone" id="markdown-dropzone"><strong>Drop Markdown files here</strong><span>.md, .markdown, or .txt / multiple files supported</span><button class="button" type="button" data-import-action="choose">Choose files</button><input type="file" id="markdown-files" accept=".md,.markdown,.txt,text/markdown,text/plain" multiple hidden></div><label class="field paste-field">Or paste AI Markdown<textarea id="paste-markdown" rows="9" maxlength="${MAX_REPORT_CHARACTERS}" placeholder="Paste the complete Markdown output from any AI.">${escape(state.pasteText)}</textarea></label><div id="import-drafts">${drafts().map(fields).join('')}</div><div id="import-read-errors" class="form-error" role="alert">${state.readErrors.map(escape).join('<br>')}</div><div class="import-submit"><p id="import-status" class="form-error" role="status">${escape(state.status)}</p><button class="button primary" type="submit" id="save-imports" ${!drafts().length || state.busy || state.reading?'disabled':''}>Import ${drafts().length || ''} report${drafts().length===1?'':'s'}</button></div></form></section>`;
+    state.targetId ||= getActive()?.id || getReports()[0]?.id || '';
+    return `<section class="view-content import-view"><div class="view-heading"><h1>Import Markdown</h1><button class="text-button" type="button" data-action="view" data-view="report">Back to report</button></div><form id="markdown-import-form"><div class="import-intent"><label class="field">Use this Markdown to<select id="import-intent"><option value="new" ${state.intent==='new'?'selected':''}>Create independent reports</option><option value="revise" ${state.intent==='revise'?'selected':''} ${!getReports().length?'disabled':''}>Revise an existing report</option></select></label><label id="revision-target-field" class="field" ${state.intent==='revise'?'':'hidden'}>Report to revise<select id="import-revision-target">${getReports().map(report=>`<option value="${report.id}" ${state.targetId===report.id?'selected':''}>${escape(report.title)}</option>`).join('')}</select></label></div><div class="import-destination" ${state.intent==='revise'?'hidden':''}><label class="field">Add reports to<select id="import-destination">${[...groups].map(([key,report])=>`<option value="${escape(key)}" ${state.destination===key?'selected':''}>${escape(groupName(report))}</option>`).join('')}<option value="" ${state.destination===''?'selected':''}>New research query</option></select></label><label id="new-query-field" class="field" ${state.destination!==''?'hidden':''}>Research query<input id="import-query" maxlength="200" value="${escape(state.newQuery)}" ${state.destination===''&&state.intent==='new'?'required':''} placeholder="The question these reports answer"></label><label class="field">Source / agent (optional)<input id="import-agent" maxlength="100" value="${escape(state.agent)}" placeholder="Claude, Gemini, Codex, or another source"></label></div><div class="dropzone" id="markdown-dropzone"><strong>Drop Markdown files here</strong><span>.md, .markdown, or .txt / multiple files supported</span><button class="button" type="button" data-import-action="choose">Choose files</button><input type="file" id="markdown-files" accept=".md,.markdown,.txt,text/markdown,text/plain" multiple hidden></div><label class="field paste-field">Or paste AI Markdown<textarea id="paste-markdown" rows="9" maxlength="${MAX_REPORT_CHARACTERS}" placeholder="Paste the complete Markdown output from any AI.">${escape(state.pasteText)}</textarea></label><div id="import-drafts">${drafts().map(fields).join('')}</div><div id="import-read-errors" class="form-error" role="alert">${state.readErrors.map(escape).join('<br>')}</div><div class="import-submit"><p id="import-status" class="form-error" role="status">${escape(state.status)}</p><button class="button primary" type="submit" id="save-imports" ${!drafts().length || state.busy || state.reading?'disabled':''}>${state.intent==='revise'?'Review revision':`Import ${drafts().length || ''} report${drafts().length===1?'':'s'}`}</button></div></form></section>`;
   }
-  function refreshDrafts(){const target=document.querySelector('#import-drafts');if(target)target.innerHTML=drafts().map(fields).join('');const button=document.querySelector('#save-imports');if(button){button.disabled=!drafts().length||state.busy||state.reading;button.textContent=`Import ${drafts().length || ''} report${drafts().length===1?'':'s'}`;}const errors=document.querySelector('#import-read-errors');if(errors)errors.innerHTML=state.readErrors.map(escape).join('<br>');}
+  function refreshDrafts(){const target=document.querySelector('#import-drafts');if(target)target.innerHTML=drafts().map(fields).join('');const button=document.querySelector('#save-imports');if(button){button.disabled=!drafts().length||state.busy||state.reading;button.textContent=state.intent==='revise'?'Review revision':`Import ${drafts().length || ''} report${drafts().length===1?'':'s'}`;}const errors=document.querySelector('#import-read-errors');if(errors)errors.innerHTML=state.readErrors.map(escape).join('<br>');}
   function suggestQuery(meta){if(state.destination==='' && !state.touched.has('query') && meta.query){state.newQuery=meta.query;const field=document.querySelector('#import-query');if(field)field.value=meta.query;}}
   async function addFiles(files){
-    if(state.busy||state.reading)return;
+    if(state.busy||state.reading||isReadOnly())return;
     open();state.reading=true;state.readErrors=[];refreshDrafts();
     try {
       for(const file of Array.from(files)) {
@@ -52,8 +53,10 @@ export function createMarkdownImporter({api,escape,markdown,getReports,getActive
     if(event.target.dataset.draftField){const draft=drafts().find(d=>d.id===event.target.dataset.draftId);if(!draft)return;const field=event.target.dataset.draftField;draft.touched.add(field);if(field==='title')draft.title=event.target.value;else draft.dates[field]=event.target.value;}
   });
   document.addEventListener('change',event=>{
+    if(event.target.id==='import-intent'){state.intent=event.target.value;document.querySelector('#revision-target-field').hidden=state.intent!=='revise';document.querySelector('.import-destination').hidden=state.intent==='revise';document.querySelector('#import-query').required=state.intent==='new'&&state.destination==='';refreshDrafts();}
+    if(event.target.id==='import-revision-target')state.targetId=event.target.value;
     if(event.target.id==='markdown-files')addFiles(event.target.files);
-    if(event.target.id==='import-destination'){state.destination=event.target.value;document.querySelector('#new-query-field').hidden=state.destination!=='';document.querySelector('#import-query').required=state.destination==='';}
+    if(event.target.id==='import-destination'){state.destination=event.target.value;document.querySelector('#new-query-field').hidden=state.destination!=='';document.querySelector('#import-query').required=state.intent==='new'&&state.destination==='';}
   });
   document.addEventListener('click',event=>{
     const button=event.target.closest('[data-import-action]');if(!button||state.busy)return;
@@ -64,6 +67,12 @@ export function createMarkdownImporter({api,escape,markdown,getReports,getActive
     if(event.target.id!=='markdown-import-form')return;event.preventDefault();if(state.busy||state.reading)return;
     clearTimeout(pasteTimer);updatePaste();
     const queue=drafts(),{selected}=destination();if(!queue.length)return;
+    if(state.intent==='revise'){
+      const report=getReports().find(r=>r.id===state.targetId);
+      if(!report||queue.length!==1){state.status='Choose one Markdown output and the report it should revise.';document.querySelector('#import-status').textContent=state.status;return;}
+      const draft=queue[0],dates=Object.fromEntries(Object.entries(draft.dates).filter(([key,value])=>value||draft.touched.has(key)));
+      await onRevise(report,draft.content,dates,draft.filename);return;
+    }
     const group=selected?(selected.query?{query:selected.query}:{company:selected.company,ticker:selected.ticker}):{query:state.newQuery.trim()};
     state.status='';
     if(!selected&&!group.query){state.status='Enter the research query for these reports.';document.querySelector('#import-status').textContent=state.status;return;}
@@ -88,10 +97,10 @@ export function createMarkdownImporter({api,escape,markdown,getReports,getActive
   });
   let dragDepth=0;
   const isFileDrag=event=>Array.from(event.dataTransfer?.types || []).includes('Files');
-  document.addEventListener('dragenter',event=>{if(!isFileDrag(event))return;event.preventDefault();dragDepth++;document.body.classList.add('file-drag');});
+  document.addEventListener('dragenter',event=>{if(!isFileDrag(event))return;event.preventDefault();if(isReadOnly())return;dragDepth++;document.body.classList.add('file-drag');});
   document.addEventListener('dragover',event=>{if(!isFileDrag(event))return;event.preventDefault();event.dataTransfer.dropEffect='copy';});
   document.addEventListener('dragleave',event=>{if(!isFileDrag(event))return;dragDepth=Math.max(0,dragDepth-1);if(!dragDepth)document.body.classList.remove('file-drag');});
-  document.addEventListener('drop',event=>{if(!isFileDrag(event))return;event.preventDefault();dragDepth=0;document.body.classList.remove('file-drag');if(event.dataTransfer.files.length)addFiles(event.dataTransfer.files);});
+  document.addEventListener('drop',event=>{if(event.defaultPrevented||!isFileDrag(event))return;event.preventDefault();if(isReadOnly()){document.body.classList.remove('file-drag');return;}dragDepth=0;document.body.classList.remove('file-drag');if(event.dataTransfer.files.length)addFiles(event.dataTransfer.files);});
   window.addEventListener('blur',()=>{dragDepth=0;document.body.classList.remove('file-drag');});
-  return {render,addFiles};
+  return {render,addFiles,setIntent(intent){state.intent=intent;state.targetId=getActive()?.id || state.targetId;}};
 }

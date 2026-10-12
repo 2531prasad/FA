@@ -70,3 +70,9 @@ The existing Thesis Ledger plugin holds matching original bodies and immutable i
 - Preserve the ability to work with distinct analyses of the same company.
 - Enable synthesis across reports into a more comprehensive analysis.
 - Support the terminal as the analysis workflow and the local web UI as its presentation surface.
+
+## Hosted library and update workflow
+
+The owner approved publishing the active financial reports on GitHub Pages on 13 October 2026, and subsequently confirmed leaving the source repository public. Hosted reading, search, comparison, timelines, revision differences and handoff copying must work without the local Node API. Editing and explicit Git synchronization remain local. A saved report reaches the hosted viewer after commit, push and successful deployment.
+
+Prioritize Markdown file/paste revisions with recoverable browser drafts and an explicit content/date review. Synthesis remains provider-independent: hand off exact pinned sources and their date limits to any agent. Do not heuristically declare financial agreements or contradictions. Unknown dates remain unknown; mixed source dates remain distinct.

@@ -1,14 +1,14 @@
 # Keep the same research library across devices
 
-Private GitHub repository: [2531prasad/FA](https://github.com/2531prasad/FA).
+Public GitHub repository: [2531prasad/FA](https://github.com/2531prasad/FA).
 
 The repository includes the app and the entire `data/` library: current reports, all saved revisions, pinned source relationships, original Markdown files, the Thesis Ledger snapshot, and recovery archives. Archives are retained for recovery and do not appear in the active library. Installed agent skills, machine-specific hooks, credentials, temporary files, and browser preferences are excluded.
 
-The app requires Git and Node.js 20+ on each device. It has no package dependencies to install. Keep the GitHub repository private because it contains your research. Signing into your own GitHub account gives each device access; no FA account or AI-provider integration is required.
+The app requires Git and Node.js 20+ on each device. It has no package dependencies to install. The owner confirmed leaving the source repository public on 13 October 2026. The owner-approved GitHub Pages export includes the active reports publicly; the complete recovery library remains in Git. Signing into your own GitHub account gives each device access; no FA account or AI-provider integration is required.
 
 ## First use on another device
 
-Sign into GitHub as an account with access to the private repository, then run:
+Clone the public repository below. Sign into your GitHub account before pushing changes.
 
 ```powershell
 git clone https://github.com/2531prasad/FA.git FA
@@ -22,6 +22,10 @@ Use the default `data/reports/` directory to share this library. A custom `FA_DA
 
 ## Start work on a device
 
+In the running local app, click the **Git status** control in the top bar. **Check remote** fetches remote state without merging. **Pull from GitHub** requires a clean checkout and performs a fast-forward pull. The server pauses report operations during these Git operations. If app files change, restart `npm start` and reload before editing. A status read alone uses cached tracking refs; **Remote unknown** means there has not been a successful remote check in this server session.
+
+For terminal Git operations, use the stopped-server workflow below.
+
 Stop the local server with Ctrl+C before pulling or switching branches. Commit any previous work first, then:
 
 ```powershell
@@ -33,6 +37,12 @@ npm start
 Pulling while the server is running can replace report files underneath an active edit. Work on one device at a time when refining the same report.
 
 ## Save and send changes to the other device
+
+The UI's **Review commit & push** lists changed `data/` files and already committed, unpushed commits. After review, **Commit reviewed reports & push** commits report data and pushes the branch. It rejects a stale review, refuses staged app files, checks for remote changes again, and retains the local commit if pushing fails. Existing unpushed commits can include app changes; they are listed explicitly. Last check/push/pull times are actual device operation times in IST, not inferred from report dates or commit dates.
+
+A custom `FA_DATA_DIR` disables Git writes in the UI because that directory may not belong to this checkout. Browser drafts are not included in Git: save them as revisions first. Work on one device at a time when refining the same report. Resolve conflicts deliberately in a terminal; the UI never automatically merges histories.
+
+For terminal publication:
 
 Finish the report revision and stop the server with Ctrl+C. Then:
 
