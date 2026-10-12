@@ -8,7 +8,7 @@ npm start
 
 Open **http://127.0.0.1:4310**. The server binds to loopback only. No accounts, cloud service, API key, or package installation are needed.
 
-The app and complete report library are versioned together in Git. See [SYNC.md](SYNC.md) for cloning onto another device and synchronizing changes through a private GitHub repository. Running the app stays local; GitHub stores the committed files. Reports do not sync automatically.
+The app and complete report library are versioned together in the private [2531prasad/FA](https://github.com/2531prasad/FA) GitHub repository. See [SYNC.md](SYNC.md) for cloning onto another device and synchronizing changes. Running the app stays local; GitHub stores the committed files. Reports do not sync automatically.
 
 New data directories start empty. The active library contains the user's two imported AI-position reports; generated examples have been removed from the library and automatic sample seeding has been removed.
 

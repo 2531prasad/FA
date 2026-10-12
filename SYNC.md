@@ -1,15 +1,17 @@
 # Keep the same research library across devices
 
+Private GitHub repository: [2531prasad/FA](https://github.com/2531prasad/FA).
+
 The repository includes the app and the entire `data/` library: current reports, all saved revisions, pinned source relationships, original Markdown files, the Thesis Ledger snapshot, and recovery archives. Archives are retained for recovery and do not appear in the active library. Installed agent skills, machine-specific hooks, credentials, temporary files, and browser preferences are excluded.
 
 The app requires Git and Node.js 20+ on each device. It has no package dependencies to install. Keep the GitHub repository private because it contains your research. Signing into your own GitHub account gives each device access; no FA account or AI-provider integration is required.
 
 ## First use on another device
 
-Copy the repository's Clone URL from GitHub and run:
+Sign into GitHub as an account with access to the private repository, then run:
 
 ```powershell
-git clone YOUR_PRIVATE_REPOSITORY_URL FA
+git clone https://github.com/2531prasad/FA.git FA
 cd FA
 npm start
 ```
@@ -65,4 +67,4 @@ cd FA
 npm start
 ```
 
-A bundle contains committed files only. A clone from a bundle initially points its origin at that bundle; use `git remote set-url origin YOUR_PRIVATE_REPOSITORY_URL` before using GitHub for later sync. Bundles are ignored so they are not committed recursively.
+A bundle contains committed files only. A clone from a bundle initially points its origin at that bundle; use `git remote set-url origin https://github.com/2531prasad/FA.git` before using GitHub for later sync. Bundles are ignored so they are not committed recursively.
