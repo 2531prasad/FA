@@ -1,0 +1,9 @@
+# Keep code portable, and report/source bytes unchanged on every operating system.
+* text=auto eol=lf
+*.ttf binary
+data/** -text
+
+# A report contains immutable revision snapshots. Never line-merge its JSON
+# automatically when two devices change it independently.
+data/reports/*.json merge=binary
+data/ledger-source-snapshot.json merge=binary

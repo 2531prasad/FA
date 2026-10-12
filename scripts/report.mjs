@@ -1,0 +1,17 @@
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import path from 'node:path';
+import { groupName } from '../lib/groups.mjs';
+import { reportDates, formatInstant, buildTimeline } from '../lib/chronology.mjs';
+const [command,...args]=process.argv.slice(2);
+const server=process.env.FA_URL || 'http://127.0.0.1:4310';
+const flags={};const positional=[];for(let i=0;i<args.length;i++){if(args[i].startsWith('--')){if(!args[i+1] || args[i+1].startsWith('--'))throw new Error(`Missing value for ${args[i]}`);flags[args[i].slice(2)]=args[++i];}else positional.push(args[i]);}
+const request=async(route,body)=>{const res=await fetch(server+route,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});const data=await res.json();if(!res.ok)throw new Error(data.error);return data;};
+try {
+  const dates=Object.fromEntries([['reportDate',flags['report-date']],['informationCutoff',flags['information-cutoff']],['marketDate',flags['market-date']]].filter(([,value])=>value!==undefined));
+  if(command==='list'){const reports=await request('/api/reports');console.table(reports.map(r=>({id:r.id,research:groupName(r),title:r.title,reportDate:reportDates(r).reportDate || 'Not recorded',cutoff:reportDates(r).informationCutoff || 'Not recorded',saved:formatInstant(r.revisions.at(-1).createdAt),revision:r.revisions.at(-1).number})));}
+  else if(command==='timeline'){const reports=(await request('/api/reports')).filter(r=>!flags.query || groupName(r)===flags.query);const timeline=buildTimeline(reports);console.log('Research dates (date only)');console.table(timeline.milestones);console.log('Recorded history (IST)');console.table(timeline.events.map(e=>({...e,at:formatInstant(e.at),sources:undefined})));}
+  else if(command==='create'){if(!positional[0])throw new Error('Supply a UTF-8 Markdown file.');const bytes=await readFile(positional[0]);const result=await request('/api/import',{query:flags.query,company:flags.company,ticker:flags.ticker,title:flags.title,type:flags.type,agent:flags.agent,dates,content:new TextDecoder('utf-8',{fatal:true,ignoreBOM:true}).decode(bytes),originalFile:{name:path.basename(positional[0]),sha256:createHash('sha256').update(bytes).digest('hex')}});console.log(`${result.reused?'Already present':'Created'} ${result.report.id} / revision ${result.report.revisions.at(-1).number}`);}
+  else if(command==='revise'){if(!positional[0]||!positional[1]||!flags.base||!flags.summary)throw new Error('Supply a report ID, Markdown file, --base revision, and --summary.');const dateUpdate=Object.keys(dates).length?{...reportDates(await request(`/api/reports/${encodeURIComponent(positional[0])}`)),...dates}:undefined;const report=await request(`/api/reports/${encodeURIComponent(positional[0])}/revisions`,{content:await readFile(positional[1],'utf8'),baseRevision:Number(flags.base),summary:flags.summary,dates:dateUpdate});console.log(`Saved ${report.id} / revision ${report.revisions.at(-1).number}`);}
+  else console.log('FA terminal workflow\n\nnode scripts/report.mjs list\nnode scripts/report.mjs create analysis.md --company "Company" --ticker "TICKER" --title "Research thesis"\nnode scripts/report.mjs create analysis.md --query "Research question" --title "Independent analysis"\nnode scripts/report.mjs revise REPORT_ID analysis.md --base 1 --summary "Updated assumptions"\n\nStart the server with npm start first. Set FA_URL for a different local port.');
+}catch(error){console.error(error.message);process.exitCode=1;}

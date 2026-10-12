@@ -1,0 +1,46 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import http from 'node:http';
+const root=path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+
+test('HTTP workflow and terminal CLI persist edits and reject stale writes',async t=>{
+  const dir=await mkdtemp(path.join(os.tmpdir(),'fa-http-test-'));
+  assert.ok(path.resolve(dir).startsWith(path.resolve(os.tmpdir())+path.sep));
+  const port=14310,url=`http://127.0.0.1:${port}`;
+  const child=spawn(process.execPath,['server.mjs'],{cwd:root,env:{...process.env,PORT:String(port),FA_DATA_DIR:dir,FA_NO_DEMO:'1'},stdio:['ignore','pipe','pipe'],windowsHide:true});
+  t.after(async()=>{if(child.exitCode===null){await new Promise(resolve=>{child.once('exit',resolve);child.kill();});}await rm(dir,{recursive:true,force:true});});
+  await new Promise((resolve,reject)=>{const timeout=setTimeout(()=>reject(new Error('Test server did not become ready.')),10000);child.stdout.on('data',chunk=>{if(String(chunk).includes('FA workspace:')){clearTimeout(timeout);resolve();}});child.once('error',reject);child.once('exit',code=>{clearTimeout(timeout);reject(new Error(`Test server exited: ${code}`));});});
+  const request=async(route,body)=>fetch(url+route,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});
+  const page=await request('/');assert.equal(page.status,200);assert.match(await page.text(),/Research library/);assert.match(page.headers.get('content-security-policy'),/frame-ancestors 'none'/);
+  assert.deepEqual(await (await request('/api/reports')).json(),[]);
+  const result=await request('/api/reports',{company:'Terminal test',ticker:'TERM',title:'A persistent thesis',content:'## Thesis\nInitial.'});assert.equal(result.status,201);const report=await result.json();
+  const edit=await request(`/api/reports/${report.id}/revisions`,{baseRevision:1,content:'## Thesis\nRefined.',summary:'Refined thesis.'});assert.equal(edit.status,200);
+  const stale=await request(`/api/reports/${report.id}/revisions`,{baseRevision:1,content:'Stale.',summary:'Stale edit.'});assert.equal(stale.status,409);
+  const cli=spawn(process.execPath,['scripts/report.mjs','list'],{cwd:root,env:{...process.env,FA_URL:url},stdio:['ignore','pipe','pipe'],windowsHide:true});let output='';cli.stdout.on('data',chunk=>output+=chunk);const code=await new Promise((resolve,reject)=>{cli.on('error',reject);cli.on('exit',resolve);});assert.equal(code,0);assert.match(output,/A persistent thesis/);
+  const saved=await (await request(`/api/reports/${report.id}`)).json();assert.equal(saved.revisions.length,2);assert.equal(saved.revisions[1].content,'## Thesis\nRefined.');
+  const markdownFile=path.join(dir,'analysis.md');await writeFile(markdownFile,'## Thesis\nPublished from a terminal agent.');
+  const publisher=spawn(process.execPath,['scripts/report.mjs','revise',report.id,markdownFile,'--base','2','--summary','Agent refined the thesis.'],{cwd:root,env:{...process.env,FA_URL:url},stdio:['ignore','pipe','pipe'],windowsHide:true});
+  let published='';publisher.stdout.on('data',chunk=>published+=chunk);assert.equal(await new Promise((resolve,reject)=>{publisher.on('error',reject);publisher.on('exit',resolve);}),0);assert.match(published,/revision 3/);
+  const updated=await (await request(`/api/reports/${report.id}`)).json();assert.equal(updated.revisions[2].content,'## Thesis\nPublished from a terminal agent.');
+  for(const asset of ['/importer.js','/markdown-import.js','/chronology.mjs','/report-template.md'])assert.equal((await request(asset)).status,200);
+  const importedContent='---\ntitle: AI output\nquery: Provider-neutral question\nreport_date: 2026-10-12\nagent: Claude\n---\n# Thesis\n'+ '\u20b9\u{1f4ca}'.repeat(22000);
+  const payload=Buffer.from(JSON.stringify({content:importedContent}));
+  // Split inside a multibyte currency character to exercise streaming UTF-8 decoding.
+  const split=payload.indexOf(Buffer.from('\u20b9'))+1;
+  const streamed=await new Promise((resolve,reject)=>{const req=http.request(url+'/api/import',{method:'POST',headers:{'Content-Type':'application/json'}},res=>{let body='';res.setEncoding('utf8');res.on('data',chunk=>body+=chunk);res.on('end',()=>resolve({status:res.statusCode,body:JSON.parse(body)}));});req.on('error',reject);req.write(payload.subarray(0,split));setTimeout(()=>req.end(payload.subarray(split)),10);});
+  assert.equal(streamed.status,201);assert.equal(streamed.body.report.revisions[0].content,importedContent);assert.equal(streamed.body.report.agent,'Claude');assert.equal(streamed.body.report.dates.reportDate,'2026-10-12');
+  const duplicate=await request('/api/import',{content:importedContent});assert.equal(duplicate.status,200);assert.equal((await duplicate.json()).reused,true);
+  assert.equal((await request('/api/import',{query:'Question',content:'---\nreport_date: 2026-02-30\n---\n# Invalid date'})).status,400);
+  const neutralFile=path.join(dir,'neutral.md');const neutralContent='---\ntitle: Terminal import\nquery: Provider-neutral question\nagent: Codex\n---\n# Independent thesis\nNew perspective.';await writeFile(neutralFile,neutralContent);
+  const creator=spawn(process.execPath,['scripts/report.mjs','create',neutralFile],{cwd:root,env:{...process.env,FA_URL:url},stdio:['ignore','pipe','pipe'],windowsHide:true});let created='';creator.stdout.on('data',chunk=>created+=chunk);assert.equal(await new Promise((resolve,reject)=>{creator.on('error',reject);creator.on('exit',resolve);}),0);assert.match(created,/Created .*revision 1/);
+  const all=await (await request('/api/reports')).json();assert.equal(all.length,3);const neutral=all.find(r=>r.title==='Terminal import');assert.equal(neutral.agent,'Codex');assert.deepEqual(neutral.dates,{});assert.equal(neutral.revisions[0].content,neutralContent);
+  const foreign=await fetch(url+'/api/reports',{method:'POST',headers:{'Content-Type':'application/json',Origin:'https://example.com'},body:'{}'});assert.equal(foreign.status,403);
+  assert.equal((await fetch(url+'/api/reports',{method:'POST',headers:{'Content-Type':'application/json'},body:'bad-json'})).status,400);
+  assert.equal((await fetch(url+'/api/reports',{method:'POST',headers:{'Content-Type':'text/plain'},body:'{}'})).status,415);
+  assert.equal((await request('/missing-file')).status,404);
+});

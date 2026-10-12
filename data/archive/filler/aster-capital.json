@@ -1,0 +1,16 @@
+{
+  "id": "aster-capital",
+  "company": "Aster Semiconductor",
+  "ticker": "ASTR",
+  "title": "Following the cash",
+  "type": "Capital allocation",
+  "sample": true,
+  "revisions": [
+    {
+      "number": 1,
+      "content": "## Investment thesis\nA useful third perspective is the conversion of accounting earnings into cash available to owners. This report investigates reinvestment rather than projecting a stock price.\n\n## Financial performance\nIn the illustrative fundamental report, free cash flow rises from USD 310 million to USD 425 million while operating profit rises from USD 480 million to USD 718 million. These are invented demonstration figures.\n\n## Risks\nGrowth can consume cash when inventory and receivables expand faster than revenue. Capital spending is not automatically value creation.\n\n## Open questions\n- Separate maintenance spending from growth investment.\n- Compare customer payment terms with supplier terms.\n- Assess returns on completed capacity additions.\n\n## Sources\nFictional example, cross-referencing the illustrative fundamental report.",
+      "summary": "Initial cash-flow perspective.",
+      "createdAt": "2026-10-12T10:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+# Report data is intentionally versioned for cross-device use.
+*.tmp
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.bundle
+
+# Installed skills and agent runtime settings belong to each device.
+.agents/skills/
+.claude/
+.codex/
+.cursor/
+.gemini/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.local/

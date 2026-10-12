@@ -1,0 +1,16 @@
+{
+  "id": "northline-overview",
+  "company": "Northline Logistics",
+  "ticker": "NRTH",
+  "title": "The cost of the last mile",
+  "type": "Fundamental analysis",
+  "sample": true,
+  "revisions": [
+    {
+      "number": 1,
+      "content": "## Investment thesis\nThis fictional logistics company illustrates research on a capital-intensive operator. Study route density, utilization, and replacement spending before estimating normalized earnings.\n\n## Risks\nFuel, labor costs, and low utilization may reduce operating leverage.\n\n## Open questions\nWhat percentage of capital spending simply maintains the existing network?\n\n## Sources\nFictional demonstration. No verified source documents supplied.",
+      "summary": "Initial research outline.",
+      "createdAt": "2026-10-12T10:00:00.000Z"
+    }
+  ]
+}

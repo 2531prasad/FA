@@ -1,0 +1,16 @@
+{
+  "id": "lumen-overview",
+  "company": "Lumen Payments",
+  "ticker": "LMNP",
+  "title": "A network worth studying",
+  "type": "Fundamental analysis",
+  "sample": true,
+  "revisions": [
+    {
+      "number": 1,
+      "content": "## Investment thesis\nThis fictional payments company illustrates a second company workspace. Examine transaction economics, merchant retention, and the cost of distribution.\n\n## Risks\nPricing pressure and fraud losses could offset volume growth.\n\n## Open questions\nHow much growth comes from existing merchants?\n\n## Sources\nFictional demonstration. No financial figures or verified sources supplied.",
+      "summary": "Initial research outline.",
+      "createdAt": "2026-10-12T10:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "aster-downside",
+  "company": "Aster Semiconductor",
+  "ticker": "ASTR",
+  "title": "Where the thesis breaks",
+  "type": "Downside analysis",
+  "sample": true,
+  "revisions": [
+    {
+      "number": 1,
+      "content": "## Investment thesis\nThe downside case begins with a mismatch between capacity commitments and realized demand. This fictional counter-thesis tests the assumptions in the fundamental report.\n\n## Business quality\nSwitching costs are useful only while the customer's platform remains in production. A new architecture could reset the competitive landscape.\n\n## Valuation\nAssume growth slows, operating margins contract, and working capital absorbs cash. No fair value can be estimated without an entry price, share count, and explicit discount-rate assumptions.\n\n## Risks\n- Customer spending may be cyclical rather than structural.\n- Inventory commitments could remain after orders are deferred.\n- Concentration magnifies the effect of one lost platform.\n\n## Open questions\nWhat evidence would distinguish a temporary pause from a structurally weaker business?\n\n## Sources\nFictional example. No verified source documents supplied.",
+      "summary": "Initial counter-thesis.",
+      "createdAt": "2026-10-12T10:00:00.000Z"
+    }
+  ]
+}
