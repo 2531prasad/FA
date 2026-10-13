@@ -7,3 +7,6 @@ data/** -text
 # automatically when two devices change it independently.
 data/reports/*.json merge=binary
 data/ledger-source-snapshot.json merge=binary
+
+folio/*.md -text
+folio/Reports/*.md -text

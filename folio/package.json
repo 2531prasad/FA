@@ -1,0 +1,9 @@
+{
+  "name": "folio-research-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local Markdown research ledger. HTML, CSS and vanilla JavaScript.",
+  "type": "module",
+  "scripts": { "start": "node server.mjs", "test": "node --test tests/*.test.mjs" },
+  "engines": { "node": ">=20" }
+}

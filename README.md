@@ -1,5 +1,20 @@
 # FA — local research workspace
 
+## Updated FA reader
+
+The primary reader now keeps the published paper/ink/red identity and Archivo Black typography while adding a report browser with folder breadcrumbs, document thumbnails, descriptions and distinct research/save dates. It includes a VS Code-style page minimap, saved reading size and contrast, focus mode, sources, comparisons, revision inspection and research prompts.
+
+The **Research** button provides independent FA, synthesis/cross-examination, macro, bottleneck, mispricing, asymmetry, challenge and continuation workflows. Independent briefs omit peer reports. Synthesis packets require at least two distinct sources and retain their hashes and date boundaries. A source compilation is not a completed AI synthesis; canonical status requires an explicit authored declaration. See [AGENTS.md](AGENTS.md) and the [initial FA prompt](public/prompts/initial-fa.md).
+
+`npm start` continues to use the existing versioned report store, CLI and loopback server at `http://127.0.0.1:4310`. The new reader adapts the existing records without rewriting their content or revision history. **Workspace tools** opens the retained controls for Git synchronization, bulk imports and date editing. Repository handoffs include the record ID and base revision for safe terminal updates.
+
+`npm run start:folio` separately starts the standalone Markdown-file reader at `http://127.0.0.1:5173`; see [Folio usage](folio/README.md). Its ordinary files and private `.ledger/` snapshots are separate from the repository's versioned JSON records. Neither mode automatically synchronizes the other.
+
+GitHub Pages uses the same new reader in read-only mode with the existing static export. Imports, editing and Git operations remain local. Existing `?report=REPORT_ID` links continue to open the matching report. All runtime assets, including fonts and the Markdown renderer, are bundled and load under `/FA/`.
+
+Validation: `npm test` runs the existing repository checks, the standalone reader checks and storage-adapter checks. `npm run build:pages -- --include-reports` exports active report records while excluding archived research and private local reader state.
+
+
 A dependency-free prototype for turning terminal-generated financial analysis into durable, revisioned reports. Requires Node.js 20 or later.
 
 ```powershell

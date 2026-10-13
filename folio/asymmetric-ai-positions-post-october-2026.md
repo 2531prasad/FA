@@ -1,0 +1,449 @@
+# Asymmetric AI positions after October 2026
+
+**Research cutoff: 11 October 2026. Investment horizon: approximately three to five years.** Prices are indicative USD quote snapshots from the 9 October trading session, including subsequent after-hours prints. Financial information uses releases available by the cutoff. Future scenarios are my deductions, not analyst targets or company promises.
+
+## 1. My answer
+
+**NVDA remains my first choice for additional research toward a concentrated position at the prices reviewed. AVGO is second, with a material financing qualification. CRDO and MRVL are the most interesting additional candidates for a more aggressive bet. ANET is an excellent business whose current valuation makes the stock less compelling.** Confidence in this relative ranking is moderate; confidence in any stock sustaining 55% annual returns is low.
+
+The next physical bottleneck I would investigate is **moving data between accelerators and through the storage hierarchy**. That points toward custom silicon, switching, copper and optical connectivity, lasers, and context storage. It does not make every supplier in those categories an asymmetric purchase.
+
+Your preference for concentration is reflected here: these are competing investment theses, not a proposed basket. Owning many suppliers exposed to the same hyperscaler budgets would spread the same underlying demand risk across more tickers.
+
+| Priority at reviewed prices | Companies | Judgment |
+|---|---|---|
+| Strongest current candidate | **NVDA** | Existing earnings provide a substantially less demanding starting valuation than many smaller AI suppliers. The bet is sustained system-level economics, not merely GPU shipment growth. |
+| Strong candidate with an additional risk | **AVGO** | Custom accelerators and networking can capture the move toward specialized inference. Check vendor-backed financing and distinguish semiconductor economics from software cash flow. |
+| Aggressive, conditional candidates | **CRDO, MRVL** | Connectivity content and custom-silicon adoption can grow disproportionately. Customer concentration, dilution, architectural displacement and valuation are central. |
+| Strong businesses; price or evidence gated | **ANET, COHR, TSM** | Arista needs exceptional growth at its premium; Coherent needs capacity and margin conversion; TSM captures manufacturing across competing architectures but carries a distinct Taiwan risk. |
+| High expectations already embedded | **LITE, ALAB, AMD** | Their successful business outcomes could still produce ordinary stock returns. At reviewed prices, the required per-share earnings ramps are steep. |
+| Cyclical earnings must be normalized first | **MU, WDC, STX** | Capacity demand is credible. Today's earnings, pricing and margins cannot be treated as permanent annuities. |
+| Physical infrastructure watchlist | **VRT, ETN; also GEV, PWR, GLW, ASML** | Real routes to cash, but a supplier bottleneck alone does not demonstrate attractive stock valuation. The last four are mechanism watchlist names, not fully valued recommendations in this report. |
+
+**I would keep the NVDA thesis under review rather than rotate simply because another AI stock has a smaller market capitalization.** I would prioritize AVGO's financing disclosures, CRDO's customer-level revenue quality, and MRVL's conversion of design wins into cash. ANET would move up my list if its price fell relative to earnings or its AI growth materially exceeded the assumptions below.
+
+## 2. Evidence rules and the return hurdle
+
+I give greatest weight to reported financial results, SEC disclosures, announced commercial arrangements, and technical publications. Management guidance and performance claims are labeled as such. A CEO's announcement is evidence of what the company announced; it is not proof that deployment, efficiency, demand or profitability will materialize. Brokerage opinions and price targets do not drive the ranking.
+
+Your stated historical XIRR of about 55% is a useful hurdle, but it is not an estimate of future opportunity. At 55% annually, new money must grow approximately **3.724 times in three years** or **8.947 times in five years**. A successful AI industry is insufficient: a stock must deliver enough *per-share* earnings growth after dilution, at an acceptable purchase and eventual sale multiple.
+
+The report models USD price returns before dividends, taxes, remittance costs and INR/USD movements. Those differ from your realized account XIRR. I do not have readable, current holding weights or cost bases and therefore do not propose trade quantities or portfolio weights.
+
+There is no demonstrated, bounded downside here. Stocks can lose most of their value. The scenario tables are conditional arithmetic, not probability-weighted expected returns, downside floors or fair-value estimates.
+
+## 3. The logical progression: which efficiencies create which opportunities?
+
+### A. Smaller nodes: a system upgrade opportunity, not an automatic demand guarantee
+
+Your node-shrink premise is directionally useful, but node labels alone are a poor investment variable. Manufacturing cost, yields, usable bandwidth, packaging, software, interconnects and system utilization all affect useful work per dollar and watt.
+
+TSMC's reported Q2 2026 wafer revenue included 3% from 2nm, 30% from 3nm and 33% from 5nm. Nvidia's Rubin announcement describes a six-chip platform spanning CPUs, GPUs, networking and interconnects. These are concrete reasons to analyze the whole system rather than extrapolate transistor density alone. [S1] [S2]
+
+**Deduction:** if workloads are monetizable and next-generation systems produce materially more cash per constrained megawatt, buyers have a reason to refresh. NVDA can capture accelerated computing plus surrounding system content; AVGO/MRVL can capture custom chips and connectivity; TSM captures fabrication. Manufacturing equipment demand follows customer fab investment, which has a separate timing cycle.
+
+**Failure path:** efficiency improves faster than paid demand, leaving sufficient existing capacity. Orders slow despite better chips. Another possibility is that manufacturing costs rise faster than customers' willingness to pay.
+
+### B. Old chips: economic depreciation differs from accounting depreciation
+
+A new GPU does not automatically render an older GPU worthless. Older hardware can remain useful for less demanding inference, lower-price service tiers and jobs whose economics tolerate lower efficiency.
+
+The relevant calculation is approximately:
+
+`Old-system cash contribution = utilization × realized service revenue − electricity − maintenance − other operating costs`
+
+Replacement requires comparing the cash flows of keeping and replacing it, including the new purchase, resale value, downtime and financing. At a power-constrained site, the relevant opportunity cost also includes what newer hardware could earn using the same megawatts. Positive old-system cash contribution does not guarantee that keeping it is optimal.
+
+**Deduction:** faster useful refresh can benefit equipment suppliers while shortening the economic life of equipment owned by compute renters. A longer accounting depreciation schedule cannot prevent falling rental rates or create cash. I would scrutinize GPU-owning, debt-funded operators before treating them as superior ways to capture the chip replacement cycle.
+
+This is a structural reason to favor the supplier's margin and cash conversion over the customer's announced capex size. It is not a claim that all compute operators will fail.
+
+### C. Power: separate aggregate energy, peak capacity and local density
+
+For an illustrative inference workload:
+
+`Energy = tokens processed × joules per token × facility overhead factor`
+
+Training, networking, storage and idle demand must be added separately. If tokens grow 3× and energy per token falls 50%, inference energy grows 1.5×. If energy per token falls 75%, it falls to 0.75×. **Demand expansion can overwhelm efficiency, but this is an assumption to measure, not a law.**
+
+Total energy, required peak megawatts and rack heat density can follow different paths. A denser rack may need liquid cooling, upgraded power distribution and different electrical architecture even if fleet energy growth slows.
+
+Vertiv announced an 800 VDC development roadmap with Nvidia for next-generation infrastructure, with portfolio timing targeted from the second half of 2026. That announcement is evidence of a planned architectural change, not proof that all products have shipped. [S3]
+
+**Deduction:** VRT and ETN can benefit from higher equipment content per rack and retrofit spending. GEV and PWR are more dependent on new generation, transmission and electrical construction. Utilities' cash capture depends on regulation, financing and permitted returns, so electricity demand alone does not imply exceptional equity returns.
+
+The IEA explicitly models multiple paths for AI electricity demand; its report is useful background, not a guarantee of a single trajectory. [S4]
+
+### D. Memory: efficiency can reduce requirements for a fixed workload
+
+A simplified inference capacity model is:
+
+`Memory capacity = model weights + concurrent requests × context length × KV-cache bytes per token + workspaces`
+
+Bandwidth demand is a different constraint. Quantization, compression, better scheduling and offloading can lower bytes per request. Google Research reported at least 6× KV-cache compression in specified TurboQuant experiments. That is a research result for tested workloads, not a 6× reduction in every model's total memory or the entire installed memory fleet. [S5]
+
+**Deduction:** memory efficiency is real, but aggregate memory demand also depends on concurrency, context, larger workloads and training. A sixfold reduction in KV bytes can be offset by a sixfold increase in context times concurrency, while other memory components remain unchanged.
+
+MU therefore needs a thesis about HBM capacity, bandwidth, supply discipline and achievable through-cycle margins. It should not rely on either “memory efficiency kills memory demand” or “AI guarantees permanent scarcity.” Compression can benefit NVDA and AMD customers without proportionately benefiting memory suppliers.
+
+### E. Storage: more bytes does not automatically mean more revenue
+
+I would model storage as:
+
+`Retained bytes = generated data × retained fraction × replication factor ÷ effective compression`
+
+`Drive units = retained capacity ÷ capacity per drive`
+
+`Capacity revenue ≈ exabytes shipped × realized price per terabyte`
+
+More capacity per drive can reduce drive counts. Falling price per terabyte can offset exabyte growth. More inference does not imply every token is stored indefinitely: deletion, deduplication and retention policies matter.
+
+There is nevertheless a concrete additional storage use case. Nvidia announced BlueField-4 STX and CMX context storage to extend the working-memory hierarchy for agentic inference. **Nvidia's “STX” architecture name is unrelated to Seagate's stock ticker STX.** Partner availability was targeted for the second half of 2026. [S6]
+
+**Deduction:** separate high-performance context storage, enterprise flash, training-data access and low-cost retained capacity. WDC/STX primarily express the high-capacity HDD case; flash and storage-system vendors express different layers. Nvidia itself can capture processors and networking within this storage architecture. A context-storage announcement is not direct proof of extra HDD orders.
+
+### F. Networking: the strongest additional bottleneck, with architecture risk
+
+Separate **scale-up** connections within tightly coupled compute groups, **scale-out** connections between those groups, and **scale-across** connections between sites. The bandwidth, distance, latency and power requirements differ.
+
+Arista sells networking systems and software; Broadcom and Marvell supply semiconductor content; Credo and Astera address particular connectivity functions; Coherent and Lumentum supply photonic components and related products. Their reported releases describe these distinct product routes. [S7] [S8] [S9] [S10] [S11] [S12]
+
+**Deduction:** more distributed workloads and faster links can increase connectivity content per dollar of compute. But not every extra dollar of bandwidth goes to Arista, and not every optical transition helps a DSP or retimer supplier. Co-packaged optics can relocate or remove components that conventional pluggable modules require. Copper can remain economically attractive over short distances while optics gains elsewhere.
+
+My preferred research question is: **which difficult-to-replace component receives more dollars per deployed system across several plausible architectures?** Lasers and qualified optical manufacturing are promising answers. They still need acceptable valuation, yields and cash returns on capacity expansion.
+
+## 4. Who captures the capex—and how much value?
+
+There is no reliable universal allocation of a hypothetical $100 billion: the answer depends on leased versus owned capacity, land, power infrastructure, hardware mix and construction scope. Supplier revenue must not be summed across tiers because that double-counts the same expenditure. Nvidia pays TSMC and memory vendors from the revenue it receives; the cloud buyer did not necessarily spend an additional amount on top.
+
+| Layer | Receiving companies reviewed or placed on watchlist | What creates shareholder value | What can interrupt capture |
+|---|---|---|---|
+| Accelerator and system design | NVDA, AMD, AVGO, MRVL | Architecture adoption, content per deployment, margin and software/system integration | Custom alternatives, pricing pressure, workload efficiency, design losses |
+| Fabrication and process tools | TSM; ASML watchlist | Qualified leading-edge capacity, packaging/process investment, tool and service demand | Capacity overbuild, customer investment pauses, geopolitical restrictions |
+| Memory | MU | Qualified HBM supply, bandwidth, supply discipline | Capacity additions, compression, adverse product mix and pricing |
+| Copper, switches and optical links | ANET, AVGO, MRVL, CRDO, ALAB, COHR, LITE; GLW watchlist | Higher connectivity content, qualification barriers, manufacturing yield | Component bypass, integration, lower prices and customer concentration |
+| Storage | WDC, STX; flash/system vendors need separate valuation work | Capacity shipped × price/TB, performance requirements and cost advantages | Higher TB/drive, price erosion, compression and inventory reversal |
+| Rack power and cooling | VRT, ETN | More equipment per rack, retrofit content, service and execution | Architecture changes, competitive pricing, delayed deployment |
+| Generation and electrical construction | GEV, PWR watchlist | Equipment scarcity, project execution, service and backlog conversion | Permitting, funding, commodity inputs, delays and contract terms |
+| Commodity materials and basic construction inputs | No top-ranked stock from this research | Volume plus cost advantage or durable pricing power | Large revenue with limited margins, working capital and easy substitution |
+
+The physical watchlist has commercial evidence: Corning announced a multiyear Meta agreement worth **up to** $6 billion; GEV reported more than $5 billion of year-to-date data-center orders in Electrification; Quanta reported strong demand linked partly to data centers; ASML's results identify AI-related customer investment. These facts support investigating the route to cash. They do not establish upside at today's stock prices. [S13] [S14] [S15] [S16]
+
+For actual value capture, I would track **incremental operating profit, cash received, reinvestment and diluted shares**, not just announced contract value. Reservations, backlog, purchase commitments, recognized revenue and collected cash are different stages.
+
+## 5. Valuation: compare the earnings underneath the P/E
+
+The following is a deliberately transparent diagnostic: **price divided by four times the latest reported quarterly EPS**. It is *neither trailing-twelve-month P/E nor consensus forward P/E*. Rapid growth, seasonal patterns and cyclicality make it imperfect. It provides a reproducible starting point without importing analyst forecasts.
+
+Adjusted EPS uses each issuer's definition and is not fully comparable across companies. Nvidia now includes stock compensation in its non-GAAP results, whereas many peers exclude it. The table therefore favors several peers relative to a fully consistent economic comparison. [S17]
+
+| Stock | Indicative price, USD | Latest reported quarter | Quarterly EPS basis | Annualized-quarter P/E |
+|---|---:|---|---:|---:|
+| NVDA | 229.28 | Q2 FY27 | Adjusted 2.22 | **25.8×** |
+| AVGO | 361.54 | Q3 FY26 | Adjusted 3.32 | **27.2×** |
+| ANET | 216.74 | Q2 2026 | Adjusted 1.02 | **53.1×** |
+| TSM | 453.31 | Q2 2026 | Reported USD EPS per ADR 4.31 | **26.3×** |
+| MRVL | 275.28 | Q2 FY27 | Adjusted 0.94 | **73.2×** |
+| CRDO | 216.55 | Q1 FY27 | Adjusted 1.20 | **45.1×** |
+| COHR | 312.62 | Q4 FY26 | Adjusted 1.74 | **44.9×** |
+| LITE | 1,103.36 | Q4 FY26 | Adjusted 3.23 | **85.4×** |
+| ALAB | 342.21 | Q2 2026 | Adjusted 0.80 | **106.9×** |
+| AMD | 608.10 | Q2 2026 | Adjusted 1.66 | **91.6×** |
+| WDC | 397.28 | Q4 FY26 | Adjusted 3.56 | **27.9×** |
+| STX | 783.00 | Q4 FY26 | Adjusted 5.71 | **34.3×** |
+| MU | 1,029.00 | Q4 FY26 | Adjusted 33.42 | **7.7×** |
+| VRT | 242.78 | Q2 2026 | Adjusted 1.52 | **39.9×** |
+| ETN | 429.65 | Q2 2026 | Adjusted 3.15 | **34.1×** |
+
+Financial sources: [S1], [S7]–[S12], [S17]–[S22], [S22a] and [S27]. Market-price provenance and refresh links: [S29]. Rounded prices may differ slightly from execution prices.
+
+Four particularly important corrections:
+
+1. **NVDA:** reported GAAP EPS includes equity-investment gains. I use adjusted operating-oriented EPS rather than capitalize those gains as recurring chip profit. Its Q2 revenue was $96.2 billion, with 75% GAAP gross margin; these are reported results, not a TAM forecast. [S17]
+2. **WDC:** Q4 GAAP EPS of $8.21 versus adjusted EPS of $3.56 includes substantial adjustment for gains associated with its retained Sandisk investment. WDC became a separate HDD-focused business after the Sandisk separation. A raw GAAP P/E can materially understate the operating earnings multiple. [S18]
+3. **MU:** its latest reported GAAP gross margin was 86.8%. That is the reported number, not a margin I assume lasts. The apparently tiny run-rate P/E is a reason to investigate pricing-cycle exposure, not automatically declare a bargain. [S19]
+4. **STX:** full-year reported GAAP EPS was $13.90, giving about 56× at the reviewed price; full-year adjusted EPS of $15.58 gives about 50×. The 34× quarterly figure already capitalizes a stronger recent quarter. [S20]
+
+Management guidance provides a second, explicitly forward-looking check. Vertiv's FY2026 adjusted EPS midpoint of $6.70 implies roughly 36×; Eaton's $13.50 midpoint implies roughly 32×. Lumentum's next-quarter adjusted EPS midpoint of $4.20 would imply roughly 66× if annualized. These are guidance-based diagnostics, not achieved annual earnings. [S12] [S21] [S22]
+
+## 6. The individual bets
+
+### NVDA — the broadest supplier exposure with the strongest starting earnings case
+
+**Successful path:** system efficiency makes more workloads economical; paid usage expands; customers continue spending to improve output within power constraints; Nvidia retains enough system and software advantage to defend its profit pool. Networking and storage-adjacent processor content add routes to revenue beyond the GPU itself. [S2] [S6]
+
+The replacement thesis is strongest when buyers optimize *profit per megawatt*. That creates a refresh incentive without requiring old GPUs to become worthless. Nvidia's Rubin efficiency figures are workload-specific company claims, not fleet-wide measured savings.
+
+**Cash-quality qualification:** Q2 operating cash flow was $24.1 billion against $59.7 billion of GAAP net income; accounts receivable absorbed $22.3 billion and inventories $5.8 billion. Some earnings also came from investment gains. This makes the quarter's cash conversion materially weaker than its EPS suggests. I would require subsequent collection evidence before calling the earnings multiple a dependable cash-flow bargain. [S17]
+
+**What breaks it:** growth in useful AI services fails to justify installed capacity; custom accelerators capture more of the profit pool; buyers obtain large price concessions; product transitions or supply constraints disrupt deliveries; equity-supported customer purchases mask weak independent demand.
+
+**Decision:** strongest candidate of NVDA/ANET/AVGO at reviewed prices. Business positioning confidence: high. Three-year 55% return confidence: low. Monitor revenue-to-cash conversion and system gross profit, not just unit demand.
+
+### AVGO — specialized compute plus networking, with financing attached
+
+Broadcom reported $16.7 billion of AI semiconductor revenue and $13.7 billion of total-company free cash flow in Q3. Those are different measures: the latter includes the broader company, including software. [S8]
+
+**Successful path:** large customers use custom accelerators for repeatable workloads while requiring more surrounding network silicon. Broadcom captures growing content and converts it into per-share cash without losing customer economics to self-design or rival suppliers.
+
+**Critical qualification:** the Q3 SEC filing describes financing-partner arrangements and a backstop on equipment lease obligations, with customer-default and resale-value exposure. It specifies a payment formula linked to 85% of outstanding backstop obligations less equipment resale value. The disclosed maximum potential undiscounted liability upon deployment of all relevant racks was approximately $29 billion; no payments had been made under the backstop. This is contingent exposure, not a $29 billion cash payment already incurred. [S23]
+
+**What breaks it:** custom-chip adoption advances but supplier margins compress; customer concentration increases; financing support grows faster than owner cash generation; depreciating hardware becomes collateral in a default. A supplier becoming financier can inherit part of the customer's risk.
+
+**Decision:** second priority, conditional on acceptable credit exposure and cash conversion. Confidence: moderate.
+
+### CRDO — aggressive connectivity-content bet
+
+Credo's latest quarter reported $479 million of revenue, GAAP EPS of $0.67 and adjusted EPS of $1.20. The GAAP/adjusted gap matters; it must not disappear from the thesis merely because revenue is accelerating. [S10]
+
+**Successful path:** high-speed links create growing active electrical cable and optical/interconnect content; customer adoption broadens; earnings rise faster than dilution; new optical products preserve value as architectures change.
+
+**What breaks it:** an important customer changes architecture or supplier; short-reach links integrate functions elsewhere; transition to optics reduces existing content before new products compensate; apparently exceptional adjusted earnings fail to become owner cash.
+
+**Decision:** one of the better smaller-company mechanisms, but approximately 45× the adjusted quarter run rate already prices meaningful success. Demand customer-by-customer evidence, recurring shipment ramps and diluted-share tracking. Confidence: moderate in the mechanism, low in the precise magnitude.
+
+### MRVL — a real custom-silicon and photonics option; long-term targets are not free upside
+
+Marvell reported Q2 revenue of $2.739 billion, GAAP EPS of $0.33, adjusted EPS of $0.94 and operating cash flow of $605.5 million. [S9]
+
+Its **6 October investor-day presentation**, read directly, targets $20 billion of FY2028 revenue and $70–90 billion of FY2031 revenue. Its long-term non-GAAP model implies EPS above $30. These are management targets, not contracted revenue or my forecast. [S24, slides 34–43 and 145–147]
+
+**Successful path:** multiple custom accelerators progress from design to volume deployment; surrounding interconnect and optical content expands; operating leverage produces durable margins; acquisitions and compensation do not consume the per-share gain.
+
+**Valuation check:** at $275.28, hypothetical FY2031 EPS of exactly $30 valued at 30× produces a $900 share price. Across approximately 4.3 years, that is about **32% annualized**, despite enormous business growth. At the same horizon and 30× exit multiple, a 55% return would require approximately $60 EPS. The company's “above $30” statement does not specify that outcome.
+
+**What breaks it:** delayed programs, design losses, customer insourcing, dilution, acquisition integration or margins below the target model.
+
+**Decision:** high-upside research candidate, but entry discipline is necessary. Confidence in the technological route: moderate; in achieving the long-term financial model: low.
+
+### ANET — excellent economics, a demanding stock price
+
+Arista reported $3.036 billion of Q2 revenue and 45.4% GAAP operating margin. It is already a highly profitable business; margin expansion alone has less room to rescue an expensive purchase. [S7]
+
+**Successful path:** Ethernet deployments expand, customers value Arista's operating software and system reliability, and it gains profitable AI networking share alongside enterprise demand.
+
+**What breaks it:** Nvidia's integrated networking gains share; customers use alternative or more internally specified systems; merchant silicon does not translate into Arista system revenue; earnings grow well but the premium multiple falls.
+
+**Decision:** retain on a price-sensitive shortlist. Your interest is justified, but the current earnings valuation requires much more from ANET than from NVDA. Confidence: high in current business quality, moderate in the relative valuation judgment.
+
+### COHR and LITE — optical bottlenecks supported by commercial commitments
+
+Nvidia announced nonexclusive strategic arrangements with each company in March, including multibillion-dollar purchase commitments and $2 billion investments per company. The announcements support the capacity/qualification thesis. They do not disclose a universal guaranteed margin or turn all investment dollars into immediate operating earnings. [S25] [S26]
+
+**Successful path:** more bandwidth and optical connections require qualified lasers and photonic manufacturing; yield and utilization improve; suppliers capture profit as new capacity ramps. Optical architectures still require light generation even when electronics move closer to the switch or accelerator.
+
+Coherent's latest adjusted EPS was $1.74, versus $1.19 GAAP. Lumentum's adjusted EPS was $3.23, with a large GAAP loss affected by a noncash convertible-debt exchange charge. Noncash classification does not make dilution or capital-structure consequences irrelevant. [S11] [S12]
+
+**What breaks it:** dual sourcing restrains pricing; extra capacity reduces scarcity; yields disappoint; co-packaged optics changes product mix; capital expenditure or dilution absorbs operating gains.
+
+**Decision:** COHR has the less demanding reviewed earnings valuation of the two. LITE needs a much steeper ramp or lower entry price. Both warrant research; neither is undiscovered. Confidence: moderate.
+
+### TSM — manufacturing capture across competing architectures
+
+TSMC reported Q2 revenue of $40.2 billion and gross margin of 67.7%. [S1]
+
+**Successful path:** GPUs and custom accelerators both require advanced fabrication and packaging, and TSM retains sufficient technological and manufacturing leadership. This is a manufacturing thesis that can benefit when accelerator-design winners change.
+
+**What breaks it:** Taiwan disruption, overseas manufacturing costs, weaker pricing or heavy reinvestment that prevents revenue growth becoming distributable cash. Node leadership alone does not neutralize these risks.
+
+**Decision:** credible concentrated exposure if the thesis is manufacturing scarcity. I do not see stronger evidence for a 55% compounding path here than for the leading design suppliers. Use ADR earnings consistently; do not multiply ADR prices by ordinary-share counts when estimating market capitalization. Confidence: moderate.
+
+### WDC, STX and MU — structural demand with cyclical profits
+
+**Successful storage path:** retained enterprise and AI data grows faster than capacity improvements and price erosion; industry supply stays disciplined; product cost advantages translate into durable free cash flow. For STX, the technology transition to higher-density drives must create profit, not only more TB. For WDC, separate HDD operating earnings from investment gains.
+
+**Successful memory path:** HBM qualification, bandwidth needs and supply discipline preserve economic returns even as software becomes more memory-efficient.
+
+**What breaks these bets:** new supply, customer inventory digestion, compression, lower price/TB or memory ASPs, and capex needed to maintain competitiveness. These can all occur while AI usage grows.
+
+**Decision:** WDC is the less demanding of the two HDD valuations reviewed, but I would not assume its latest margin is normalized. MU's headline multiple is especially unreliable as a measure of through-cycle cheapness. I would require a product-level supply/pricing model before elevating any of these to the top tier. Confidence: high that normalization matters; low on the timing of the cycle turn.
+
+### AMD, ALAB, VRT and ETN — successful operations can be priced ahead of success
+
+AMD's Q2 release reports $1.66 adjusted EPS and describes an Anthropic partnership for up to 2 GW of deployments. Its OpenAI arrangement also contains equity-warrant terms: deployed volume and shareholder dilution must be analyzed together. [S27] [S28]
+
+**AMD successful path:** profitable accelerator share gains, improving software and system execution, plus its CPU businesses. At the reviewed valuation, winning share must generate an exceptional *per-share* ramp. Your existing AMD holding can be a different decision from adding new money at this price.
+
+**ALAB successful path:** interconnect and fabric products gain content in new rack architectures. **Failure:** integration, redrivers or architectural changes bypass expensive functions, or share growth absorbs operating success. Its quarter-run-rate multiple above 100× leaves little room for merely good execution. [S22a]
+
+**VRT/ETN successful path:** power density, electrical upgrades and cooling content outgrow simple installed-chip counts. **Failure:** project delays, price competition, working capital or valuation compression. They are credible cash recipients but are not automatically the most convex equities. [S21] [S22]
+
+## 7. What must happen to meet 55%?
+
+Use this relationship:
+
+`Three-year price multiple = (1 + annual EPS growth)^3 × exit P/E ÷ entry P/E`
+
+Here, starting EPS is four times the latest reported adjusted quarter, with company-definition caveats from Section 5. The following deliberately favorable exit multiples are assumptions chosen to expose the growth burden. They are not predicted market valuations.
+
+| Stock | Assumed exit P/E | EPS CAGR required for 55% stock CAGR over three years |
+|---|---:|---:|
+| NVDA | 30× | **47%** |
+| AVGO | 30× | **50%** |
+| ANET | 40× | **70%** |
+| CRDO | 40× | **61%** |
+| MRVL | 35× | **98%** |
+| COHR | 35× | **68%** |
+| LITE | 45× | **92%** |
+| AMD | 50× | **90%** |
+| ALAB | 50× | **100%** |
+
+The choice of exit multiple changes the hurdle materially. NVDA requires roughly 57% EPS growth if the eventual multiple is 25×; ANET requires roughly 78% at 35×. Cheap starting valuation can be more useful than a more exciting story.
+
+### Three-year sensitivity scenarios
+
+Each cell shows **assumed annual EPS growth / assumed exit P/E → stock-price CAGR**. These are illustrative stresses, not assigned probabilities or exhaustive worst cases. Starting with an unusually strong quarter makes growth assumptions particularly demanding for cyclical suppliers.
+
+| Stock | Adverse scenario | Middle scenario | Strong-success scenario |
+|---|---|---|---|
+| NVDA | 10% / 20× → **+1%** | 30% / 25× → **+29%** | 50% / 30× → **+58%** |
+| AVGO | 5% / 18× → **−9%** | 30% / 25× → **+26%** | 50% / 30× → **+55%** |
+| ANET | 10% / 25× → **−14%** | 30% / 35× → **+13%** | 50% / 40× → **+37%** |
+| CRDO | 10% / 20× → **−16%** | 40% / 30× → **+22%** | 75% / 40× → **+68%** |
+| COHR | 5% / 20× → **−20%** | 35% / 30× → **+18%** | 65% / 35× → **+52%** |
+| LITE | 0% / 20× → **−38%** | 40% / 35× → **+4%** | 80% / 45× → **+45%** |
+| ALAB | 10% / 25× → **−32%** | 45% / 40× → **+5%** | 90% / 50× → **+48%** |
+| AMD | 10% / 25× → **−29%** | 45% / 40× → **+10%** | 90% / 50× → **+55%** |
+| STX | −30% / 15× → **−47%** | 5% / 20× → **−12%** | 30% / 25× → **+17%** |
+| WDC | −25% / 15× → **−39%** | 10% / 20× → **−2%** | 35% / 25× → **+30%** |
+
+These results do **not** prove CRDO has better expected returns than NVDA. Its strong scenario requires faster growth and retains a higher valuation, with less protection if customer-level execution fails.
+
+The NVDA strong scenario also produces a very large absolute outcome: approximately $30 of annual EPS and a $899 share price. At an unchanged share count, that implies market capitalization around $22 trillion. That scale requires enormous sustained customer economics and makes 50% growth for three years a demanding thesis, even from an attractive relative P/E.
+
+### Entry conditions derived from your hurdle
+
+Under the strong-success assumptions above, the approximate **maximum entry price that still mathematically permits 55% CAGR** is $241 for NVDA, $361 for AVGO, $148 for ANET, $294 for COHR, $911 for LITE and $295 for ALAB.
+
+These are **scenario ceilings, not buy targets**. They assume the strong-success case occurs. An investor needing a margin for execution error should pay less or underwrite a better evidenced outcome. The precision is mathematical; the assumptions are uncertain.
+
+The useful practical conclusion is that ANET does not become equally attractive to NVDA just because both benefit from AI networking. Its price needs a different growth case.
+
+## 8. Successful regimes—and where the profit moves
+
+This covers the major plausible regimes relevant to the stocks reviewed; it cannot enumerate every possible future technology or corporate outcome.
+
+| Regime | Conditional winners | Who can disappoint despite AI adoption? | Evidence to watch |
+|---|---|---|---|
+| Paid usage expands faster than compute efficiency | NVDA; additional networking, optics and memory content | Any supplier that grows volume without protecting margin | Customer monetization, utilization, cash collection and repeat orders |
+| Power is scarce; next systems materially improve output/MW | NVDA; AVGO custom chips; VRT/ETN upgrade content | Owners of older low-efficiency fleets; projects awaiting power | Energized capacity, delivered system efficiency, retrofit revenue |
+| Stable inference migrates toward custom accelerators | AVGO, MRVL, TSM; architecture-dependent connectivity | GPU suppliers losing profit share even while total compute rises | Production revenue and margins rather than design-win headlines |
+| Networks become limiting; optical reach/content grows | COHR/LITE, MRVL and selected CRDO products; GLW watchlist | Components eliminated by optical integration; ANET if system share is lost | Shipments by speed/product, laser capacity, yields and customer qualification |
+| Software compression outpaces context/concurrency growth | Efficient compute platforms and customers | MU capacity/pricing; some context-storage growth forecasts | Actual bytes/request, memory bandwidth, HBM demand and ASPs |
+| Context/concurrency outgrow compression | MU and performance storage/networking suppliers, conditionally | Suppliers exposed only to cold capacity | Memory content per system, context-storage deployment and paid workloads |
+| Retained data expands; HDD industry stays disciplined | WDC/STX | Suppliers whose price/TB falls faster than volume rises | Exabytes, capacity/drive, price/TB, inventories and free cash flow |
+| Compute becomes abundant; customers pause new purchases | Efficient service users; selected services/retrofits | Most hardware suppliers and debt-funded operators | Rental rates, utilization, cancellations and delivery lead times |
+| Financing tightens despite strong long-run AI demand | Suppliers paid promptly by solvent customers | Financed deployments, high-multiple stocks and vendor guarantees | Cash conversion, credit terms, lease backstops and funding needs |
+| Fabrication or geopolitical disruption limits supply | No clean universal equity winner | NVDA/AMD/custom chips, TSM and downstream deployment schedules | Physical capacity availability and qualification alternatives |
+
+One important outcome is **AI succeeds but the hardware stocks disappoint**. That can happen if the growth was already priced, efficiency reduces purchases, suppliers surrender margins, or capacity additions eliminate scarcity. A thesis must explain why the shareholder captures value, not merely why the technology spreads.
+
+## 9. Macro and financing: the immediate October 2026 overlay
+
+The Federal Reserve's 16 September statement raised the target range by **25 basis points to 3.75–4.00%**. This does not establish the scope of the earlier 50-basis-point rise you referenced; I treat an additional 50-basis-point borrowing-cost shock as a separate stress case. [S30]
+
+Reuters reported Brent settling at **$104.72 on 9 October**, with both production disruption and Middle East uncertainty affecting oil. I use those reported facts, not the accompanying market forecasts. [S31]
+
+**My deductions:** higher funding costs raise the hurdle for long-duration projects and equipment financing. Expensive oil can sustain inflation pressure, but crude prices are not a direct proxy for every data center's electricity contract. A power upgrade can remain necessary while the stock's valuation compresses.
+
+The additional 50-basis-point stress has different effects across this chain: near-term interest expense for refinanced debt; a higher discount rate for distant profits; tighter funding for compute renters and project developers; and potential delays in suppliers' orders. Broadcom's contingent financing exposure deserves special attention here.
+
+I would not count an AI lab's fundraising and an already-announced infrastructure commitment as two independent sources of incremental spending. Nor would I capitalize a supplier's equity investment in its customer as proof of customer-generated cash demand. Trace **who pays, when cash arrives, who finances the purchase, and who owns depreciating equipment**.
+
+## 10. A concentrated research screen and thesis-break dashboard
+
+For these US names, Screener.in's Indian-company fields are not the main tool. Use issuer releases, SEC filings and a price sheet. For any Indian adjacent supplier, apply the same economics and require actual AI/data-center revenue rather than presentation keywords.
+
+| Screen | Pass condition | Reason to reject or pause |
+|---|---|---|
+| Identifiable cash recipient | Named product and commercial deployment; reported revenue or an explicitly qualified commitment | TAM, partner logos or vague AI exposure alone |
+| Increasing economic content | Dollars and gross profit per deployment rise, or share grows with demonstrable returns | Higher units with falling content or margins |
+| Reproducible earnings | Investment gains, exceptional tax items and capital-structure charges separated | Low P/E depends on nonoperating gains or peak commodity margins |
+| Per-share cash conversion | Earnings and cash growth exceed dilution and required reinvestment | Adjusted profit rises while shares, working capital or capex consume the gain |
+| Architectural durability | Product remains needed across more than one plausible system design | A single function is bypassed by integration or another link technology |
+| Customer and credit quality | Recurring deployments and acceptable payment terms | One program or financed customer drives the entire projected ramp |
+| Return arithmetic | Plausible per-share outcome clears your hurdle at a defensible exit multiple | Thesis requires both heroic growth and continuing multiple expansion |
+
+The metrics I would update each quarter:
+
+- **NVDA:** system revenue and gross profit, cash collection, inventories and customer-supported financing; distinguish operating earnings from investment gains.
+- **AVGO:** AI semiconductor revenue and margin mix, total-company cash conversion, new guarantees and maximum/default-sensitive exposures.
+- **CRDO/MRVL/ALAB:** revenue by customer/product where disclosed, production versus design wins, GAAP/adjusted gap, dilution and new architecture exposure.
+- **COHR/LITE:** capacity commissioned, yields, utilization, product mix, incremental cash profit and convertible/share-count effects.
+- **ANET:** profitable AI system deployments, customer concentration, system share and earnings growth relative to its premium.
+- **MU/WDC/STX:** supply additions, ASP or price/TB, inventory, exabytes, product costs and through-cycle reinvestment.
+- **VRT/ETN:** shipped rather than booked equipment, conversion to cash, actual liquid-cooling/power-upgrade content and project delays.
+
+**Reduce conviction when the causal link breaks.** A routine price decline alone is not a broken thesis; financed revenue without independent customer cash, durable share loss, bypassed product content, or persistent failure to convert profits into per-share cash is more consequential.
+
+For your next incremental capital decision, my order is: **re-underwrite NVDA first; inspect AVGO's credit exposure; research CRDO and MRVL as aggressive alternatives; keep ANET and COHR tied to price and operating evidence.** I would not add LITE, ALAB, AMD or the storage names simply to gain more AI exposure. Each requires its own stronger outcome than the headline theme establishes.
+
+## Sources and audit trail
+
+Links below identify the factual inputs. Statements explicitly labeled as deductions, rankings or scenarios are my analysis. No brokerage target or analyst rating is an input. Fiscal-year labels differ across issuers.
+
+- **S1 — TSMC:** Q2 2026 earnings release, 16 July 2026; reported financials and node mix. [Official PDF][S1]
+- **S2 — Nvidia:** Rubin platform announcement, 5 January 2026; roadmap, architecture and company performance claims. [Release][S2]
+- **S3 — Vertiv:** 800 VDC collaboration roadmap, November 2025. [Release][S3]
+- **S4 — IEA:** *Energy and AI*, 10 April 2025; background scenario framework, not an October 2026 forecast update. [Report][S4]
+- **S5 — Google Research:** TurboQuant, 24 March 2026; experimental KV-cache compression. [Research explanation and paper links][S5]
+- **S6 — Nvidia:** BlueField-4 STX storage architecture, 16 March 2026. [Release][S6]
+- **S7 — Arista:** Q2 2026 results, 4 August 2026. [Release][S7]
+- **S8 — Broadcom:** Q3 FY2026 results, September 2026. [Release][S8]
+- **S9 — Marvell:** Q2 FY2027 results, 27 August 2026. [SEC exhibit][S9]
+- **S10 — Credo:** Q1 FY2027 results, 1 September 2026. [Release][S10]
+- **S11 — Coherent:** Q4/FY2026 results, 12 August 2026. [Release][S11]
+- **S12 — Lumentum:** Q4/FY2026 results, 11 August 2026. [Release][S12]
+- **S13 — Corning:** Meta agreement, 27 January 2026. [Release][S13]
+- **S14 — GE Vernova:** Q2 2026 results, 22 July 2026. [Release][S14]
+- **S15 — Quanta Services:** Q2 2026 results, 30 July 2026. [Release][S15]
+- **S16 — ASML:** Q2 2026 results, 15 July 2026. [Release][S16]
+- **S17 — Nvidia:** Q2 FY2027 results; earnings reconciliation and stock-compensation treatment. [Release][S17]
+- **S18 — Western Digital:** Q4/FY2026 results, 5 August 2026. [Release][S18]
+- **S19 — Micron:** Q4/FY2026 results, 30 September 2026. [Release][S19]
+- **S20 — Seagate:** Q4/FY2026 results, 28 July 2026. [Release][S20]
+- **S21 — Vertiv:** Q2 2026 results, 29 July 2026. [Release][S21]
+- **S22 — Eaton:** Q2 2026 results. [Release][S22]
+- **S22a — Astera Labs:** Q2 2026 results, 4 August 2026. [Release][S22a]
+- **S23 — Broadcom:** Q3 FY2026 Form 10-Q, quarter ended 2 August; equipment-financing/backstop disclosures. [SEC filing][S23]
+- **S24 — Marvell:** 6 October 2026 investor day, printer-friendly deck; retrieved and text-extracted directly, particularly slides 34–43 and 145–147. [Official-hosted PDF][S24]
+- **S25 — Nvidia/Lumentum:** strategic arrangement, 2 March 2026. [Release][S25]
+- **S26 — Nvidia/Coherent:** strategic arrangement, 2 March 2026. [Release][S26]
+- **S27 — AMD:** Q2 2026 results, 4 August 2026. [Release][S27]
+- **S28 — OpenAI/AMD:** partnership announcement, 6 October 2025; deployment plans and warrant terms. [Announcement][S28]
+- **S29 — Market prices:** retrieved financial-data snapshots, latest prints dated 9 October US session/10 October UTC. Prices are secondary market facts; trailing P/E/EPS fields were not used in the scenario calculations. Public refresh links: [NVDA][S29], [AVGO](https://finance.yahoo.com/quote/AVGO/history/), [ANET](https://finance.yahoo.com/quote/ANET/history/). Live pages can change after this cutoff; the report preserves the values used.
+- **S30 — Federal Reserve:** FOMC statement, 16 September 2026. [Statement][S30]
+- **S31 — Reuters:** 9 October 2026 oil settlement; used for reported oil-price and event facts only. [Article][S31]
+
+[S1]: https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf
+[S2]: https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer
+[S3]: https://investors.vertiv.com/news/news-details/2025/From-Vision-to-Readiness-Vertiv-Collaborates-with-NVIDIA-to-Advance-800-VDC-Platform-Designs-to-Power-the-Next-Generation-of-AI-Factories/default.aspx
+[S4]: https://www.iea.org/reports/energy-and-ai
+[S5]: https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/
+[S6]: https://nvidianews.nvidia.com/news/nvidia-launches-bluefield-4-stx-storage-architecture-with-broad-industry-adoption
+[S7]: https://www.arista.com/company/news/press-release/24401-pr-20260804
+[S8]: https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial
+[S9]: https://www.sec.gov/Archives/edgar/data/1835632/000183563226000022/q227_8kx812026ex-991.htm
+[S10]: https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-First-Quarter-of-Fiscal-Year-2027-Financial-Results/default.aspx
+[S11]: https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026
+[S12]: https://investor.lumentum.com/financial-news-releases/news-details/2026/Lumentum-Announces-Fourth-Quarter-and-Full-Fiscal-Year-2026-Results/default.aspx
+[S13]: https://www.corning.com/worldwide/en/about-us/news-events/news-releases/2026/01/corning-and-meta-announce-multiyear-up-to-6-billion-agreement-to-accelerate-us-data-center-buildout.html
+[S14]: https://www.gevernova.com/news/press-releases/ge-vernova-reports-second-quarter-2026-financial-results-raises-2026-financial
+[S15]: https://investors.quantaservices.com/news-events/press-releases/detail/402/quanta-services-reports-second-quarter-2026-results
+[S16]: https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results
+[S17]: https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027
+[S18]: https://investor.wdc.com/news-releases/news-release-details/wd-reports-fiscal-fourth-quarter-and-fiscal-year-2026-financial
+[S19]: https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/
+[S20]: https://investors.seagate.com/news/news-details/2026/Seagate-Technology-Reports-Fiscal-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx
+[S21]: https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx
+[S22]: https://www.eaton.com/ae/en-gb/company/news-insights/news-releases/2026/eaton-reports-record-second-quarter-2026-results.html
+[S22a]: https://ir.asteralabs.com/news-releases/news-release-details/astera-labs-reports-second-quarter-2026-financial-results
+[S23]: https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm
+[S24]: https://d1io3yog0oux5.cloudfront.net/_2122bc187be9454fb556c7291c93ad17/marvell/files/654831/marvell-investor-day-2026-presentaion-deck-print-version.pdf
+[S25]: https://nvidianews.nvidia.com/news/nvidia-announces-strategic-partnership-with-lumentum-to-develop-state-of-the-art-optics-technology
+[S26]: https://coherent.gcs-web.com/news-releases/news-release-details/nvidia-and-coherent-announce-strategic-partnership-develop
+[S27]: https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results
+[S28]: https://openai.com/index/openai-amd-strategic-partnership/
+[S29]: https://finance.yahoo.com/quote/NVDA/history/
+[S30]: https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm
+[S31]: https://www.reuters.com/business/energy/oil-falls-trump-comments-iran-talks-ease-supply-concerns-2026-10-09/

@@ -16,6 +16,9 @@ assets['/report-template.md']='../templates/report.md';
 for(const name of ['groups','chronology','markdown-import','synthesis','diff','search','drafts'])assets[`/shared/${name}.mjs`]=`../shared/${name}.mjs`;
 for(const name of ['data-client','revision-editor','sync-view'])assets[`/${name}.js`]=`${name}.js`;
 assets['/groups.js']='../shared/groups.mjs';assets['/chronology.js']='../shared/chronology.mjs';assets['/chronology.mjs']='../shared/chronology.mjs';assets['/markdown-import.js']='../shared/markdown-import.mjs';
+for(const name of ['research.js','minimap.js','workspace-client.js','classic-app.js','classic-styles.css','favicon.svg','vendor/marked.umd.js'])assets['/'+name]=name;
+assets['/classic.html']='classic.html';
+for(const name of ['folio-adapter','research-metadata','line-diff'])assets[`/shared/${name}.mjs`]=`../shared/${name}.mjs`;
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.ttf':'font/ttf','.md':'text/markdown; charset=utf-8'};
 const server=http.createServer(async(req,res)=>{
   res.setHeader('X-Content-Type-Options','nosniff');

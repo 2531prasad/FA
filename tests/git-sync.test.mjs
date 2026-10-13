@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { mkdtemp, mkdir, rm, writeFile, readFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, writeFile, readFile, symlink } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { createGitSync } from '../lib/git-sync.mjs';
@@ -34,4 +34,9 @@ test('Git sync refuses dirty pulls and divergent histories without replacing eit
 test('Git sync disables custom-directory writes and serializes operations',async t=>{
   const {first}=await fixture(t),disabled=createGitSync(first,{allowWrites:false});assert.equal((await disabled.status()).writeEnabled,false);await assert.rejects(disabled.preview(),{status:400});await assert.rejects(disabled.pull(),{status:400});
   const sync=createGitSync(first);let release;const job=sync.exclusive(()=>new Promise(resolve=>{release=resolve;}));assert.equal(sync.busy,true);await assert.rejects(sync.exclusive(()=>{}),{status:423});release();await job;assert.equal(sync.busy,false);
+});
+test('Git root validation accepts an alias of the same directory and rejects a nested directory',async t=>{
+  const {first}=await fixture(t),alias=first+'-alias';await symlink(first,alias,'dir');
+  assert.equal((await createGitSync(alias).status()).available,true);
+  assert.equal((await createGitSync(path.join(first,'data')).status()).available,false);
 });

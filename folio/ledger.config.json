@@ -1,0 +1,23 @@
+{
+  "reports": {
+    "Reports/ai-position-reports-review.md": {
+      "label": "Combined review",
+      "kind": "Review",
+      "color": "mint",
+      "featured": true,
+      "query": "Asymmetric AI positions after October 2026"
+    },
+    "asymmetric-ai-positions-post-october-2026.md": {
+      "label": "Report A",
+      "kind": "Research",
+      "color": "coral",
+      "query": "Asymmetric AI positions after October 2026"
+    },
+    "Asymmetric_AI_Positions_Post_October_2026.md": {
+      "label": "Report B",
+      "kind": "Research",
+      "color": "lavender",
+      "query": "Asymmetric AI positions after October 2026"
+    }
+  }
+}
