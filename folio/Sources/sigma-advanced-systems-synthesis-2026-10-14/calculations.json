@@ -1,0 +1,61 @@
+{
+  "price_date": "2026-10-12",
+  "reference_price_inr": 961.7,
+  "issued_shares_crore": 18.9928952,
+  "equity_value_crore": 18265.46731384,
+  "hurdle_parent_pat_crore": {
+    "25": 1461.2373851072,
+    "35": 1043.7409893622857,
+    "45": 811.7985472817777,
+    "50": 730.6186925536
+  },
+  "q1_parent_pat_crore": 23.9024,
+  "annualised_q1_diagnostic_pe": 191.04218942281946,
+  "equity_value_to_annualised_ebitda": 74.85847259770492,
+  "cases": [
+    {
+      "case": "Stalled transfer",
+      "revenue_crore": 2000,
+      "ebitda_margin": 0.16,
+      "depreciation_crore": 60,
+      "interest_crore": 45,
+      "tax_rate": 0.25,
+      "minority_pat_crore": 10,
+      "parent_pat_crore": 151.25,
+      "terminal_pe": 25,
+      "price_inr": 199.0876040847106,
+      "value_multiple": 0.20701632950474222
+    },
+    {
+      "case": "Strong execution",
+      "revenue_crore": 4000,
+      "ebitda_margin": 0.23,
+      "depreciation_crore": 100,
+      "interest_crore": 50,
+      "tax_rate": 0.25,
+      "minority_pat_crore": 30,
+      "parent_pat_crore": 547.5,
+      "terminal_pe": 35,
+      "price_inr": 1008.9299076425168,
+      "value_multiple": 1.0491108533248588
+    },
+    {
+      "case": "Hurdle-scale execution",
+      "revenue_crore": 6500,
+      "ebitda_margin": 0.26,
+      "depreciation_crore": 150,
+      "interest_crore": 60,
+      "tax_rate": 0.25,
+      "minority_pat_crore": 100,
+      "parent_pat_crore": 1010.0,
+      "terminal_pe": 40,
+      "price_inr": 2127.1111947166437,
+      "value_multiple": 2.2118240560638904
+    }
+  ],
+  "cash_sanity_check_crore": 352.5,
+  "extra_30_collection_days_at_4000_sales_crore": 328.7671232876712,
+  "ar_facility_share_total_debt": 0.5679272543268894,
+  "ar_facility_share_current_debt": 0.8811732165316405,
+  "note": "Conditional arithmetic, not forecasts or verified terminal assumptions."
+}

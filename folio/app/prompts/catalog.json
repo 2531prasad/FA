@@ -1,0 +1,16 @@
+{
+  "prompts": [
+    {
+      "id": "initial-fa",
+      "title": "Initial FA",
+      "description": "Independent research into structural change, durable profit capture and asymmetric potential.",
+      "file": "initial-fa.md"
+    },
+    {
+      "id": "synthesize-fa",
+      "title": "Synthesize FA",
+      "description": "Cross-examine independent reports and rebuild one coherent canonical thesis.",
+      "file": "synthesize-fa.md"
+    }
+  ]
+}

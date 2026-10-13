@@ -4,11 +4,12 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { parseResearchMetadata } from './shared/research-metadata.mjs';
+import { createPdfConverter, saveConvertedMarkdown, MAX_PDF, MAX_MARKDOWN, CONVERTED_DIRECTORY } from './shared/pdf-converter.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const hash = text => crypto.createHash('sha256').update(text).digest('hex');
 const MAX_SIZE = 2 * 1024 * 1024;
-const ignored = new Set(['app', 'tests', 'node_modules', 'README.md', 'AGENTS.md']);
+const ignored = new Set(['app', 'tests', 'node_modules', 'README.md', 'AGENTS.md', CONVERTED_DIRECTORY]);
 
 export function lineDiff(before, after) {
   const a = before.split('\n'), b = after.split('\n');
@@ -56,6 +57,8 @@ export async function createLedger({root = HERE, pollMs = 1500} = {}) {
   const store = path.join(root, '.ledger');
   await fs.mkdir(store, {recursive:true, mode:0o700});
   const token = crypto.randomBytes(32).toString('hex');
+  const converter = createPdfConverter();
+  let converting = false;
   const reports = new Map(), histories = new Map();
   let serial = Promise.resolve(), generation = 0;
   const locked = task => { const result = serial.then(task); serial = result.catch(() => {}); return result; };
@@ -117,6 +120,39 @@ export async function createLedger({root = HERE, pollMs = 1500} = {}) {
       if (![`127.0.0.1:${address.port}`, `localhost:${address.port}`].includes(req.headers.host)) return send(res, 403, {error:'Local access only'});
       if (req.headers.origin && ![`http://127.0.0.1:${address.port}`, `http://localhost:${address.port}`].includes(req.headers.origin)) return send(res, 403, {error:'Origin rejected'});
       const url = new URL(req.url, `http://${req.headers.host}`);
+      if (req.method === 'GET' && url.pathname === '/api/converter') return send(res,200,await converter.status());
+      if (req.method === 'POST' && ['/api/convert-pdf', '/api/converter/save'].includes(url.pathname)) {
+        if (req.headers['x-ledger-token'] !== token) return send(res,403,{error:'Conversion request rejected'});
+        const convert = url.pathname === '/api/convert-pdf';
+        const type = (req.headers['content-type'] || '').split(';')[0].trim();
+        if (type !== (convert ? 'application/pdf' : 'application/json')) return send(res,415,{error:'Unsupported file type'});
+        if (convert && converting) return send(res,409,{error:'Another PDF is being converted. Please wait for it to finish.'});
+        const limit = convert ? MAX_PDF : MAX_MARKDOWN * 6 + 10000;
+        if (Number(req.headers['content-length']) > limit) return send(res,413,{error:'File is too large'});
+        const abort = new AbortController();
+        const disconnected = () => { if (!res.writableEnded) abort.abort(); };
+        res.on('close',disconnected);
+        if (convert) converting = true;
+        try {
+          const chunks = []; let size = 0;
+          for await (const chunk of req) {
+            size += chunk.length;
+            if (size > limit) return send(res,413,{error:'File is too large'});
+            chunks.push(chunk);
+          }
+          const data = Buffer.concat(chunks);
+          if (convert) return send(res,200,await converter.convert(data,abort.signal));
+          let input;
+          try { input = JSON.parse(data.toString('utf8')); } catch { return send(res,400,{error:'Invalid save request'}); }
+          return send(res,201,await saveConvertedMarkdown(root,input));
+        } catch (error) {
+          if (!res.destroyed) return send(res,error.status || 500,{error:error.status ? error.message : 'Could not save the converted file.'});
+        } finally {
+          res.off('close',disconnected);
+          if (convert) converting = false;
+        }
+        return;
+      }
       if (req.method === 'GET' && url.pathname === '/api/reports') {
         await locked(scan);
         return send(res, 200, {reports:[...reports.values()], generation, token});
@@ -184,11 +220,16 @@ export async function createLedger({root = HERE, pollMs = 1500} = {}) {
         });
       }
       if (req.method !== 'GET') return send(res,405,{error:'Method not allowed'});
-      const assets = {'/':'index.html','/index.html':'index.html','/app.js':'app.js','/research.js':'research.js','/minimap.js':'minimap.js','/styles.css':'styles.css','/vendor/marked.umd.js':'vendor/marked.umd.js','/favicon.svg':'favicon.svg','/fonts/ArchivoBlack-Regular.ttf':'fonts/ArchivoBlack-Regular.ttf'};
+      const assets = {'/':'index.html','/index.html':'index.html','/app.js':'app.js','/converter.js':'converter.js','/research.js':'research.js','/minimap.js':'minimap.js','/prompt-menu.js':'prompt-menu.js','/prompts/catalog.json':'prompts/catalog.json','/styles.css':'styles.css','/vendor/marked.umd.js':'vendor/marked.umd.js','/favicon.svg':'favicon.svg','/fonts/ArchivoBlack-Regular.ttf':'fonts/ArchivoBlack-Regular.ttf'};
+      if(url.pathname.startsWith('/prompts/')){
+        const catalog=JSON.parse(await fs.readFile(path.join(HERE,'app/prompts/catalog.json'),'utf8'));
+        for(const prompt of catalog.prompts||[])if(/^[a-z0-9][a-z0-9-]*\.md$/.test(prompt.file))assets['/prompts/'+prompt.file]='prompts/'+prompt.file;
+      }
       const asset = assets[url.pathname];
       if (!asset) return send(res,404,{error:'Not found'});
-      const type = asset.endsWith('.css') ? 'text/css' : asset.endsWith('.js') ? 'text/javascript' : asset.endsWith('.svg') ? 'image/svg+xml' : asset.endsWith('.ttf') ? 'font/ttf' : 'text/html';
-      send(res,200,await fs.readFile(path.join(HERE,'app',asset)),type+'; charset=utf-8');
+      const type = asset.endsWith('.css') ? 'text/css' : asset.endsWith('.js') ? 'text/javascript' : asset.endsWith('.svg') ? 'image/svg+xml' : asset.endsWith('.ttf') ? 'font/ttf' : asset.endsWith('.md') ? 'text/markdown' : asset.endsWith('.json') ? 'application/json' : 'text/html';
+      const content=await fs.readFile(path.join(HERE,'app',asset));
+      send(res,200,type==='application/json'?JSON.parse(content.toString()):content,type+'; charset=utf-8');
     } catch (err) { console.error(err.message); if (!res.headersSent) send(res,500,{error:'Could not complete the request. Check the server terminal.'}); else res.end(); }
   });
   server.on('close', () => clearInterval(timer));

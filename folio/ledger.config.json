@@ -18,6 +18,27 @@
       "kind": "Research",
       "color": "lavender",
       "query": "Asymmetric AI positions after October 2026"
+    },
+    "Reports/sigma-advanced-systems-q1fy27-initial-fa.md": {
+      "label": "Gemini Independent FA",
+      "kind": "Research",
+      "color": "coral",
+      "featured": false,
+      "query": "Sigma Advanced Systems Ltd Q1 FY27 fundamental analysis"
+    },
+    "Reports/sigma-advanced-systems-independent-fa-2026-10-14-codex.md": {
+      "label": "Codex Independent FA",
+      "kind": "Research",
+      "color": "lavender",
+      "featured": false,
+      "query": "Sigma Advanced Systems Ltd Q1 FY27 fundamental analysis"
+    },
+    "Reports/sigma-advanced-systems-super-report.md": {
+      "label": "Sigma Super Report",
+      "kind": "Synthesis",
+      "color": "mint",
+      "featured": true,
+      "query": "Sigma Advanced Systems Ltd canonical synthesis and work-transfer economics"
     }
   }
 }

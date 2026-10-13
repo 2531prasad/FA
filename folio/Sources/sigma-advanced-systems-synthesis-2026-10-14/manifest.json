@@ -1,0 +1,108 @@
+{
+  "prepared_date": "2026-10-14",
+  "cutoff": "2026-10-14",
+  "operation": "Synthesis",
+  "sources": [
+    {
+      "file": "presentation.pdf",
+      "url": "https://sigmaadvsys.com/wp-content/uploads/2026/08/Investor-Presentation-Aug-2026-1.pdf",
+      "sha256": "f6f7271a615cfb617b32381a74cba7e1bac7f013ee0ea6cf07da7639023d4e78",
+      "bytes": 3922102,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "q1-results.pdf",
+      "url": "https://sigmaadvsys.com/wp-content/uploads/2026/08/Financial-Results-June-30-2026-1.pdf",
+      "sha256": "0585e784f8fc42ad148ab43a0ef83864498c9977270dc77a2614586a044fadb1",
+      "bytes": 4907105,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "annual-report.pdf",
+      "url": "https://sigmaadvsys.com/wp-content/uploads/2026/09/SigmaAnnual-ReportFY2025-26.pdf",
+      "sha256": "54eb3b1a45a207654d875de944829615b6bfe1e1bf43b72c1fdfc0144c0336db",
+      "bytes": 7094057,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "may-results.pdf",
+      "url": "https://sigmaadvsys.com/investors/announcements/financial-results-may-25-2026.pdf",
+      "sha256": "d669e42913da9541c0c38046f6f35c37375d142fc292e22fddb8c0b6e7d1cd04",
+      "bytes": 7065223,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "sri-city.pdf",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_10092026072518_SASL_Dis30_20260910-signed.pdf",
+      "error": "Terminal archival retrieval failed; web tool read succeeded",
+      "retrieval": "Read via web tool in this synthesis session; original bytes not archived"
+    },
+    {
+      "file": "export-order.pdf",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_27072026072202_SASL_PR_20260727-signed.pdf",
+      "error": "Terminal archival retrieval failed; web tool read succeeded",
+      "retrieval": "Read via web tool in this synthesis session; original bytes not archived"
+    },
+    {
+      "file": "july-allotment.pdf",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_19072026070212_SASL_-_PRef_allotment_disclosure.pdf",
+      "error": "Terminal archival retrieval failed; web tool read succeeded",
+      "retrieval": "Read via web tool in this synthesis session; original bytes not archived"
+    },
+    {
+      "file": "august-allotment.pdf",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_04082026193650_Intimation_to_SE_of_Allotment_PI_Non-Cash-signed.pdf",
+      "error": "Terminal archival retrieval failed; web tool read succeeded",
+      "retrieval": "Read via web tool in this synthesis session; original bytes not archived"
+    },
+    {
+      "file": "bromford.pdf",
+      "url": "https://sigmaadvsys.com/investors/new/SASL-BromfordPressNoteDisclosure-Signed.pdf",
+      "sha256": "6e0829c3d2cc00c99d85173d6ca316a77a03ef5074418029467b37089ffcd575",
+      "bytes": 3358566,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "rr-additional.pdf",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_25082026073445_Disclosure_Reg_30_-_20260825-signed.pdf",
+      "error": "Terminal archival retrieval failed; web tool read succeeded",
+      "retrieval": "Read via web tool in this synthesis session; original bytes not archived"
+    },
+    {
+      "file": "price-history.html",
+      "url": "https://stockanalysis.com/quote/nse/SIGMAADV/history/",
+      "sha256": "5c63398f6b99d428a3f3b312ba6e88bcb3425d00d700bcf1672897680ddca613",
+      "bytes": 109176,
+      "retrieval": "Downloaded in this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "sigma-advanced-systems-q1fy27-initial-fa.source.txt",
+      "source_path": "Reports/sigma-advanced-systems-q1fy27-initial-fa.md",
+      "sha256": "fae870abd9df43478399f56113fe0f563f42ba6d67e7ade98f0e410be5184c1d",
+      "bytes": 20310,
+      "role": "Exact analyzed independent-report snapshot; .txt to avoid report discovery",
+      "retrieval": "Exact copy of the selected workspace report during this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "sigma-advanced-systems-independent-fa-2026-10-14-codex.source.txt",
+      "source_path": "Reports/sigma-advanced-systems-independent-fa-2026-10-14-codex.md",
+      "sha256": "a3295dda779c1c983e180cef794875441b11f94311d4894dbe4f118dc3d8a474",
+      "bytes": 26753,
+      "role": "Exact analyzed independent-report snapshot; .txt to avoid report discovery",
+      "retrieval": "Exact copy of the selected workspace report during this synthesis session, 14 October 2026"
+    },
+    {
+      "file": "sri-city-bse.pdf",
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c693d50c-6c22-4518-983a-9f6d53079e2e.pdf",
+      "sha256": "b2b81ec907a1b0a8c4fdf2edaa435d9683ee14646df7e25b97a88c887ba0698f",
+      "bytes": 400441,
+      "retrieval": "Copied unchanged from prior source archive and reread locally; NSE publication separately rechecked via web tool"
+    }
+  ],
+  "notes": [
+    "Exact report inputs retained as .source.txt to avoid duplicate discovery.",
+    "Freshly retrieved Q1, FY26 annual report and May financial PDF hashes match the earlier archived originals.",
+    "Macro primary pages were checked with web tools; exact HTML bytes not archived.",
+    "Source declarations in the synthesis point to original report paths; the .source.txt files preserve the analyzed versions independently of future path edits."
+  ]
+}

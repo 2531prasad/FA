@@ -4,7 +4,7 @@ The published FA design with Folio's local Markdown files, safe editing and pers
 
 ## Run
 
-Requires Node.js 20 or newer. From the repository root, run `npm run start:folio`. Alternatively, in this `folio/` folder:
+Requires Node.js 20 or newer. In this folder:
 
 ```sh
 npm start
@@ -44,7 +44,13 @@ A VS Code-style minimap sits beside the report's scroll viewport on wide screens
 
 ## Prepare macro and asymmetric-position research
 
-**Research** in the masthead opens eight editable briefs: Independent FA, Synthesis / cross-examination, map the macro regime, find the moving bottleneck, find the mispricing, underwrite the asymmetry, challenge a thesis, and update or reconcile research. Set the market, theme, horizon, information cutoff, price date, optional return hurdle, shared brief ID and known model/agent identity. Unknown dates remain unspecified; no live prices are supplied by the app.
+For the core two-stage workflow, give each model the same scope and [initial FA prompt](app/prompts/initial-fa.md) independently. Then use the [cross-examination and synthesis prompt](app/prompts/synthesize-fa.md) with the selected responses to create or revise the canonical thesis. The synthesis tests whether the investment fails even if the macro trend succeeds, while separately checking the premises. For a later focused attack, use **Challenge my thesis**; substantive updates advance the canonical report.
+
+The default research screen is a supported path to at least 2× total investment value over a stated horizon; an explicit hurdle overrides it. This is a question to investigate, not an assumed outcome. Reports should foreground durable profit capture and use concise decision briefs, causal chains, narrow tables and selective callouts. The existing Markdown renderer supports these formats and short fenced calculations; no additional renderer is required.
+
+**Prompts** in the masthead opens a dropdown of saved Markdown prompts, sorted by most recent use in this browser. Copying a prompt (including manual copying from its text area) records usage; opening it alone does not. The dropdown shows up to five prompts. **All prompts…** at its end opens the full prompt library. Add a Markdown file and its `id`, `title`, `description` and `file` entry to `app/prompts/catalog.json` to extend the library; no header code change is needed. Prompt text loads from the original file and can be edited before copying. Usage stays browser-local, including on the hosted viewer.
+
+From the library, **Build a custom research brief** opens the existing eight editable briefs: Independent FA, Synthesis / cross-examination, map the macro regime, find the moving bottleneck, find the mispricing, underwrite the asymmetry, challenge a thesis, and update or reconcile research. Set the market, theme, horizon, information cutoff, price date, optional return hurdle, shared brief ID and known model/agent identity. Unknown dates remain unspecified; no live prices are supplied by the app.
 
 Independent FA is the initial default and excludes peer reports and an emerging synthesis, even if report boxes were previously selected. Fresh discovery also excludes existing report context. Use selected reports in other workflows to reference particular versions and date boundaries. Synthesis requires at least two distinct selected source files. **Copy research brief** copies the prompt and references; **Copy with reports** also includes their complete original Markdown. Paste the result into your chosen research tool. These controls prepare context; they do not run an AI service or independently verify claims. A selectable text fallback is provided when clipboard access is unavailable.
 
@@ -163,3 +169,21 @@ Integration tests use disposable reports to verify discovery, imports, snapshot 
 Research-brief tests also verify that independent/fresh discovery excludes prior reports, synthesis requires distinct inputs, version/date boundaries stay explicit, complete source text is included only on request, and all workflows preserve the research discipline. Metadata tests check declared roles and source pins; minimap tests check geometry, pointer/wheel/keyboard control and accessible scrollbar values.
 
 The visual foundation comes from the [published FA site](https://2531prasad.github.io/FA/). Archivo Black is bundled under the SIL Open Font License; see `app/fonts/OFL.txt`. Markdown parsing uses vendored [Marked 16.4.1](https://github.com/markedjs/marked), under the MIT license; see `app/vendor/MARKED-LICENSE.md`.
+
+## Local PDF to Markdown
+
+Use **PDF → MD** in the masthead to choose a PDF, convert it, review or edit the Markdown, and **Save locally**. Files are written to `Converted/` inside this workspace. They stay outside report discovery and the research revision ledger; use the existing Markdown Import action if you later want one in the library. **Download .md** saves a browser download instead. Existing filenames are never overwritten, and the original PDF is neither modified nor retained by the converter.
+
+This uses [Microsoft MarkItDown](https://github.com/microsoft/markitdown) with only its local PDF converter. No cloud account, AI API, third-party plugins or OCR are enabled. PDFs with selectable text work best; check tables, columns, numbers and reading order against the source. Empty extraction produces a clear error rather than saving an empty file. Limits: 25 MiB input, 2 MiB Markdown output, one active conversion, two-minute conversion timeout. Closing the converter cancels an active conversion; a completed draft survives reopening until the page is reloaded.
+
+One-time setup (Python 3.10–3.14; 3.12 recommended):
+
+```sh
+python3.12 -m venv .venv-markitdown
+.venv-markitdown/bin/python -m pip install -r tools/requirements-markitdown.txt
+npm start
+```
+
+The Python environment stays isolated from system packages. On Windows, use `.venv-markitdown\Scripts\python.exe` for installation. Set `MARKITDOWN_PYTHON` to an alternate environment's Python executable if needed. The server checks availability and displays setup guidance if the dependency is missing. Installation needs internet; conversion runs locally afterward. A static GitHub Pages copy cannot run this Python-backed utility; use the local Node server.
+
+The conversion endpoints enforce the existing loopback host, origin and session-token checks. PDF bytes are sent directly to a bounded worker process without using a shell or opening user-provided paths/URLs. Local saves only create new Markdown files inside a real `Converted/` directory. `npm test` covers extraction, invalid/empty PDFs, timeouts, local write boundaries, duplicate filenames and isolation from research reports; extraction tests require the optional Python setup above.

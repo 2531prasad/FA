@@ -5,7 +5,7 @@
 <meta name="description" content="Financial research, with its sources, disagreements and revision history intact.">
 <title>FA — Research workspace</title>
 <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/styles.css">
-<script src="/vendor/marked.umd.js" defer></script><script src="/research.js" defer></script><script src="/minimap.js" defer></script><script src="/app.js" defer></script>
+<script src="/vendor/marked.umd.js" defer></script><script src="/research.js" defer></script><script src="/minimap.js" defer></script><script src="/prompt-menu.js" defer></script><script src="/converter.js" defer></script><script src="/app.js" defer></script>
 </head>
 <body>
 <a class="skip skip-link" href="#main">Skip to report</a>
@@ -14,7 +14,11 @@
 <span class="mast-title">FINANCIAL ANALYSIS</span>
 <div class="panel-controls">
 <span id="connection" class="sync-badge pane-toggle" role="status">Local files</span>
-<button id="research-launch" class="button primary compact research-launch" aria-haspopup="dialog">Research</button>
+<div class="prompt-menu-anchor">
+<button id="research-launch" class="button primary compact research-launch" aria-haspopup="menu" aria-expanded="false" aria-controls="prompt-dropdown">Prompts <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+<div id="prompt-dropdown" class="prompt-dropdown" role="menu" aria-label="Research prompts" hidden><p class="prompt-menu-heading" role="presentation">RECENT PROMPTS</p><ul id="recent-prompts" role="none"></ul><button id="all-prompts" class="prompt-menu-more" role="menuitem">All prompts… <span aria-hidden="true">↗</span></button></div>
+</div>
+<button id="convert-pdf" class="pane-toggle" title="PDF to Markdown" aria-label="PDF to Markdown"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h9l5 5v5M14 3v5h5M5 3v18h7M14 18h7m-3-3 3 3-3 3"/></svg><span>PDF → MD</span></button>
 <button id="import-report" class="pane-toggle" title="Import Markdown"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg><span>Import</span></button>
 <button id="toggle-library" class="pane-toggle" data-panel="left" aria-controls="library-sidebar" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><path d="M9 4v16"/></svg><span>Library</span></button>
 <button id="toggle-context" class="pane-toggle" data-panel="right" aria-controls="report-context" aria-expanded="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><path d="M15 4v16"/></svg><span>Context</span></button>

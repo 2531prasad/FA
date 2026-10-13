@@ -607,6 +607,7 @@ function importDialog(){
   form.addEventListener('submit',async e=>{e.preventDefault();const button=form.querySelector('[type=submit]');button.disabled=true;$('#import-error').textContent='';try{const saved=await api('/api/import',{method:'POST',headers:{'Content-Type':'application/json','X-Ledger-Token':state.token},body:JSON.stringify({filename:$('#import-filename').value,content:$('#import-content').value})});await loadIndex();$('#dialog').close();location.hash=reportURL(saved.path);toast('Original Markdown imported.');}catch(error){$('#import-error').textContent=error.message;}finally{button.disabled=false;}});
 }
 $('#import-report').addEventListener('click',importDialog);
+$('#convert-pdf').addEventListener('click',()=>FAConverter.open({openDialog,api,getToken:()=>state.token,mountMarkdown}));
 function decisionBriefValues(content){
   const fields=Object.fromEntries(FAResearch.fields.map(field=>[field.id,null]));
   const nodes=[...markdown(content).children];
@@ -698,7 +699,7 @@ function researchDialog({workflow:initialWorkflow='independent',paths:initialPat
   $('#research-copy').addEventListener('click',()=>copy(false));$('#research-copy-reports').addEventListener('click',()=>copy(true));
   regenerate();
 }
-$('#research-launch').addEventListener('click',()=>researchDialog());
+window.FAPromptMenu=FAPrompts.create({trigger:$('#research-launch'),menu:$('#prompt-dropdown'),list:$('#recent-prompts'),openDialog,buildBrief:()=>researchDialog()});
 document.addEventListener('click',event=>{if(event.target.closest('[data-decision-template]'))decisionTemplateDialog();});
 
 window.FAPageMapController=FAMinimap.create({scroller:scrollMain,content:main,rail:$('#document-map'),canvas:$('#document-map-canvas'),thumb:$('#document-map-thumb'),enabled:()=>reading.minimap});

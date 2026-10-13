@@ -1,0 +1,160 @@
+{
+  "prepared_date": "2026-10-14",
+  "information_cutoff": "2026-10-14",
+  "price_date": "2026-10-12",
+  "operation": "Independent FA",
+  "local_sources": [
+    {
+      "file": "sigma-q1fy27.pdf",
+      "source": "https://sigmaadvsys.com/wp-content/uploads/2026/08/Financial-Results-June-30-2026-1.pdf",
+      "sha256": "0585e784f8fc42ad148ab43a0ef83864498c9977270dc77a2614586a044fadb1",
+      "bytes": 4907105
+    },
+    {
+      "file": "sigma-fy26.pdf",
+      "source": "https://sigmaadvsys.com/wp-content/uploads/2026/09/SigmaAnnual-ReportFY2025-26.pdf",
+      "sha256": "54eb3b1a45a207654d875de944829615b6bfe1e1bf43b72c1fdfc0144c0336db",
+      "bytes": 7094057
+    },
+    {
+      "file": "sigma-may-results.pdf",
+      "source": "https://sigmaadvsys.com/investors/announcements/financial-results-may-25-2026.pdf",
+      "sha256": "d669e42913da9541c0c38046f6f35c37375d142fc292e22fddb8c0b6e7d1cd04",
+      "bytes": 7065223
+    },
+    {
+      "file": "sigma-production.pdf",
+      "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c693d50c-6c22-4518-983a-9f6d53079e2e.pdf",
+      "sha256": "b2b81ec907a1b0a8c4fdf2edaa435d9683ee14646df7e25b97a88c887ba0698f",
+      "bytes": 400441
+    },
+    {
+      "file": "attachment.raw.txt",
+      "source": "/Users/prasad/Downloads/ecb7c5af-a656-4922-ab53-fe19630752c2.md",
+      "sha256": "5f03d04fdb70896936ddf35db30e201a75bf7f44ecf954943d4dff11e2a557a5",
+      "bytes": 24830
+    },
+    {
+      "file": "initial-fa-brief.raw.txt",
+      "source": "/Users/prasad/FA/app/prompts/initial-fa.md",
+      "sha256": "4595e7f67869545f359e3a83db9fb67b6ab5bfa330e7e76872f5183c3eece61a",
+      "bytes": 9601
+    },
+    {
+      "file": "workspace-instructions.raw.txt",
+      "source": "/Users/prasad/FA/AGENTS.md",
+      "sha256": "d5a9d95b3eb833d255d1cad38fbf8981bb8847b905919b9d29569d5109300758",
+      "bytes": 18352
+    },
+    {
+      "file": "sigma-q1-page-5.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "6665b3a8f0baeb94175ba5da2d944a9851dc661ed0f75db10b6a85708035c551",
+      "bytes": 608073
+    },
+    {
+      "file": "sigma-q1-page-6.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "12a658651d5956752548ef915b0b78333aad3bcdaf3c7cd3951a20e2b7de5cc6",
+      "bytes": 240923
+    },
+    {
+      "file": "sigma-verified-158.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "cc12e87ecd9872e90533e64f09c279dbb12d90db9cd19c2b1d9d7994ebdcaccf",
+      "bytes": 119902
+    },
+    {
+      "file": "sigma-verified-162.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "a57fcc01754e4cb894b4ad8895efba2d64d4735e80b6ee4290b5cc95cfa88a28",
+      "bytes": 145082
+    },
+    {
+      "file": "sigma-may-cashflow.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "35e24c98aa925b65ddd510ecaeac083e13a7bba8ed9a4c561b02aec6f3d4427e",
+      "bytes": 657482
+    },
+    {
+      "file": "sigma-production-page-2.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "874c44b3a5c40e18f79f7416fa79c5c88f39e63538a6eaa67abe09ce830a73ae",
+      "bytes": 223736
+    },
+    {
+      "file": "sigma-ownership.png",
+      "role": "Rendered original page used for verification",
+      "sha256": "2e4c6502c68d1d94078eddbab742a56350d8a84f4db26adb5b29e1b702ebb252",
+      "bytes": 220057
+    }
+  ],
+  "web_sources_without_local_snapshot": [
+    {
+      "label": "Additional Rolls-Royce agreement, 25 August 2026",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_25082026073445_Disclosure_Reg_30_-_20260825-signed.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "July cash allotment",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_19072026070212_SASL_-_PRef_allotment_disclosure.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "August noncash allotment",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_04082026193650_Intimation_to_SE_of_Allotment_PI_Non-Cash-signed.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Artillery export order",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_27072026072202_SASL_PR_20260727-signed.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Ranger consortium orders",
+      "url": "https://nsearchives.nseindia.com/corporate/MEGASOFT_17082026195000_SASL_disclosure30_SigmaIJ.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Bromford acquisition",
+      "url": "https://sigmaadvsys.com/investors/new/SASL-BromfordPressNoteDisclosure-Signed.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "September AGM proceedings",
+      "url": "https://sigmaadvsys.com/wp-content/uploads/2026/10/Proceedings-of-AGM.pdf",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Airbus H1 2026",
+      "url": "https://www.airbus.com/en/newsroom/press-releases/2026-07-airbus-reports-half-year-h1-2026-results",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Rolls-Royce H1 2026",
+      "url": "https://www.rolls-royce.com/investors/results-reports-and-presentations/financial-results/rr-holdings-plc-2026-half-year-results.aspx",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "India FY27 defence budget",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222601&lang=1&reg=3",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "NATO spending commitment",
+      "url": "https://www.nato.int/en/what-we-do/introduction-to-nato/defence-expenditures-and-natos-5-commitment?selectedLocale=fr",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Dated secondary price baseline",
+      "url": "https://stockanalysis.com/quote/nse/SIGMAADV/history/",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    },
+    {
+      "label": "Secondary price cross-check",
+      "url": "https://choiceindia.com/stocks/sigma-advanced-systems-ltd-share-price-history",
+      "provenance_gap": "Read through web tool; exact remote bytes not archived or hashed"
+    }
+  ],
+  "note": "Downloaded originals are preserved unchanged. Rendered PNGs are page images, not financial verification of the underlying issuer claims. No historical revision record is asserted."
+}

@@ -1,0 +1,2 @@
+# PDF-only dependencies; no OCR, cloud services or third-party plugins.
+markitdown[pdf]==0.1.8

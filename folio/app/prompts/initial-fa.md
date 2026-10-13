@@ -1,116 +1,75 @@
-# Initial FA research prompt
+# Initial FA: discover durable profit capture
 
-Act as an independent financial researcher building a living report in my FA workspace. Help me understand the economic opportunity, what could capture its value, what the price requires, and what could go wrong. Let the evidence determine the conclusion and the depth of each section.
+Act as an independent fundamental researcher in this FA workspace. Build an evidence-backed investment thesis from structural change, technical understanding and business economics. The objective is supported asymmetric potential, normally at least 2× over a stated horizon, not a predetermined winner or a persuasive bull case. Do not use price action. Let evidence determine the conclusion, including that no attractive opportunity is established.
 
-My research should compound across conversations. This report will become the starting context for future work, carrying forward established knowledge, sources, assumptions and unresolved questions. Maintain a coherent, evolving document that I can read and challenge.
+## Shared research brief
 
-## Why I am asking for this analysis
+- Subject / structural trend / company: [specify]
+- Market, geography and asset universe: [specify or disclose working scope]
+- Research brief / ID: [same brief across independent models]
+- Model / agent: [actual known identity; otherwise Not recorded]
+- Horizon: [specify or disclose a working horizon]
+- Information cutoff: [latest available or historical cutoff]
+- Price date and currency: [establish when valuing securities]
+- Macro premises to investigate: [separate observations, announced plans and future assumptions]
+- Particular hypothesis: [optional; test rather than adopt]
+- Return hurdle: [default: at least 2× total investment value over the stated horizon; disclose dividends and currency basis]
+- Output path: [a separate independent Markdown report]
 
-I am building a durable investment research practice around understanding how macroeconomic and structural changes create opportunities, how businesses capture the resulting economics, and whether the entry price offers a defensible asymmetric payoff. I want to connect the wider economic picture to specific business outcomes, financing risks and shareholder returns, with enough evidence to develop conviction and enough intellectual honesty to change my mind.
+Infer routine choices and disclose them; ask only where ambiguity materially changes the investigation. A supplied hurdle supersedes the default. A reported historical portfolio XIRR is not a forward earnings-growth assumption. Keep peer scopes, dates and requirements aligned where feasible; disclose deviations.
 
-TAM, industry growth, macro conditions, debt and financing costs provide the initial bearings for that investigation. They should help reveal which questions matter, expose constraints and contradictions, and uncover second-order effects. Their value comes from explaining the opportunity and its limits. The analysis should remain open to unexpected mechanisms, alternative explanations and a conclusion that the evidence does not support an attractive opportunity.
+## Protect independence and establish evidence
 
-I will use terminal-based AI agents across many conversations, potentially with different models. In ordinary chat, the original analysis gets buried, context fragments, and subsequent answers repeatedly rebuild familiar background. I want the report itself to carry the research forward. Each continuation session should read the relevant latest canonical report and continue from its established understanding, while checking which facts or assumptions need refreshing.
+Read AGENTS.md. This prompt initiates **Independent FA**: do not read peer analyses, prior rankings or an emerging canonical synthesis. Inspect filenames or declared metadata only to avoid overwriting a report. An explicitly requested continuation instead reads the designated canonical thesis, its open questions and recent changes; it must not be labeled an independent initial perspective.
 
-For example, when I return to Broadcom, I want to investigate what has changed in its economics, financing, industry position or valuation and how that affects the existing thesis. Its established business description should remain available in the report. New conversations should deepen, challenge or refine that understanding, integrating their useful findings into the same coherent document.
+Use current primary evidence for new research: filings and notes, customer disclosures, procurement and budgets, technical documentation, official statistics and regulatory records. For historical work, use evidence available within the cutoff and separate later discoveries. Distinguish reported facts, management claims, calculations, inferences and unresolved questions. Attribute material claims nearby with direct links, dates, units and definitions. State inaccessible evidence and its effect. Analyst narratives may inform market expectations but must not supply the thesis by default.
 
-The timeline should make that evolution inspectable: what new evidence arrived, what I previously believed, which assumptions or conclusions changed, when they changed, and why. Preserve actual earlier versions so that improving the current report does not erase the reasoning that led here. This should help me distinguish a stronger thesis from a more persuasive narrative and recognize when conviction has outrun the evidence.
+## Follow the economics through time
 
-The intended result is cumulative insight with manageable reading effort. Keep the current report self-contained and organized, preserve material supporting detail and caveats, and give each follow-up conversation a clear starting point. The report holds the complete analysis; the terminal conversation highlights the finding, revision and next decisive question. Success means I can quickly understand my current view, audit its foundations and evolution, and decide what deserves further investigation.
+Use this causal chain as a guide, not a mandatory section outline:
 
-Use this purpose to guide your judgment about relevance, depth and presentation. It is context for better reasoning, not a predetermined conclusion or a requirement to manufacture asymmetry. The research method should become more useful as the evidence compounds.
+**Structural change → customer spending → bottleneck → pricing-power duration → retained cash per share → shareholder return.**
 
-## Research brief
+Establish the business, payer and customer need. Then investigate the links that can change the investment decision:
 
-- Research operation: Independent FA for an initial perspective; continuation only when explicitly requested. Synthesis uses the separate cross-examination operation in AGENTS.md.
-- Shared research brief / ID: [use the same identifier and research requirements across participating models]
-- Model / agent identity: [record the exact known identity, or Not recorded]
-- Subject / company / industry / macro question: [enter subject]
-- Market, geography and asset universe: [optional]
-- Investment horizon: [optional; use a disclosed working horizon if needed]
-- Information cutoff: [latest available, or specify a historical date]
-- Price date and reporting currency: [optional; establish explicitly when valuation is relevant]
-- Existing report path: [continuation only; peer analyses and emerging syntheses are excluded from initial independent research]
-- Particular question or hypothesis: [optional; treat this as something to test]
-- Return hurdle or benchmark: [optional; specify the measure and period]
+- **Spending over the asset lifecycle.** Separate initial deployment, operation, maintenance, replacement and upgrades. Distinguish announced budgets, committed spending, actual purchases and supplier revenue. Define TAM geography, units, period and method; bound realistically serviceable demand without overlapping totals. A construction-cost share is not a lifetime profit share.
+- **Bottleneck ownership and duration.** Explain what is scarce, who controls it, and why customers cannot readily substitute, delay or build it themselves. Test qualification times, switching costs, capacity additions, competition, buyer concentration and regulation. Trace where pricing power could migrate as constraints ease. Technical importance alone does not establish economic capture.
+- **Technology and replacement economics.** Translate domain knowledge into a specific, testable economic deduction. Separate product-release cadence, accounting depreciation, useful life and economically justified replacement. Model the installed base by age or generation when material; avoid counting an upgrade as both expansion and replacement. Include utilization, redeployment, resale and retrofit costs where relevant.
+- **Efficiency and customer affordability.** Separate work per unit of energy, useful output, hardware units, selling prices and total spending. Test whether efficiency expands demand, displaces equipment or shifts value elsewhere. Compare replacement benefits with purchase cost, downtime and customer payback. Recurring technical need is not recurring funded demand.
+- **Profit and cash capture.** Trace volume, price, mix and share into margins, working capital, reinvestment, taxes, financing and diluted per-share cash. Compare competitors on equivalent fiscal periods and accounting bases. Examine whether customers earn enough to keep buying, and who bears obsolescence or default risk.
 
-Infer routine scope choices and disclose them. Ask only when an unresolved choice would materially change the research. An initial company analysis may examine its industry and macro dependencies; an initial macro analysis may remain at the industry or mechanism level until security selection is justified.
+Use company, industry and macro evidence to establish relevant growth, cash conversion and financial health. Separate observed growth from projections. Cover liquidity, debt, leases, maturities, interest cost and material purchase commitments, guarantees or customer financing; avoid double-counting exposures. Distinguish historical interest cost, contractual terms and estimated refinancing costs. Use sector-appropriate measures and explain material omissions. Follow unexpected mechanisms; do not assume a technology category or familiar company must win.
 
-## Begin from the evidence and the existing workspace
+## Underwrite the payoff and try to break the case
 
-Read applicable AGENTS.md instructions and identify the research operation before opening report contents. In initial Independent FA mode, use the shared brief and original evidence without reading peer models' reports or an emerging synthesis. Keep scope, horizon, cutoff, price date and research requirements aligned where feasible, and disclose deviations. Inspect filenames or declared metadata only as needed to choose a separate output path and avoid overwriting another perspective.
+Establish a sourced, dated valuation baseline. Explain what operating outcomes it appears to require and the evidence for a different outcome. Show a credible path to the return hurdle through business economics and per-share value, with an explicit horizon. Separate business growth, distributions, dilution and valuation-multiple changes. Test terminal multiples, economic scale and sensitivity of the result; a large theoretical upside alone is not asymmetry.
 
-Record known model/agent identity, actual reference dates and source provenance. Add opening metadata with `**Report role:** Independent FA`, `**Research query:**`, `**Research brief:**` and `**Model / agent:**`. Use Not recorded for unknown identity. A different model name does not establish independent evidence; multiple perspectives may still rely on the same sources.
+Build only scenarios that illuminate decisive uncertainties. Keep their assumptions and calculations reproducible; distinguish conditional arithmetic from forecasts. Examine downside, permanent impairment, financing constraints and correlated exposures. Do not invent probabilities, confidence scores or precise expected returns.
 
-For an explicitly requested continuation, read the latest designated canonical Super Report, its open questions and recent changes. Reuse its durable business understanding, verify material claims that may have changed, and identify gaps. Keep independent originals available for auditing; refine the canonical thesis at its existing path. If several reports claim canonical status, resolve the intended target instead of assuming the latest file is authoritative.
+First test the strongest world where the structural trend succeeds but this investment fails. Then separately test whether evidence undermines the macro premise itself. A future direction may be held provisionally for conditional analysis; it must not be relabeled a fact. Identify the weakest causal link, strongest contrary evidence and what would invalidate the thesis. Domain expertise is an edge only if its consequential deduction is supported and plausibly underappreciated.
 
-After independent analyses are complete, use the Synthesis / cross-examination operation to compare their evidence, mechanisms, assumptions, contradictions and unique discoveries. Its integrated Super Report becomes canonical for future research, preserving material unresolved dissent and source-version hashes. Label novel synthesis as new inference. This initial research brief does not authorize reading peers during independent mode.
+## Deliver concise, visual Markdown
 
-For new research, check current primary disclosures and direct evidence: filings, financial statements and notes, official statistics, regulatory decisions, customer disclosures, budgets, procurement records and other relevant original sources. Record their dates and the periods they describe. For a historical cutoff, use evidence available by that cutoff and identify later evidence separately. If browsing or a material source is unavailable, state the limitation and narrow the conclusion accordingly.
+Write a complete, self-contained report with a short main reading path. Depth follows decision relevance. Avoid generic background, exhaustive checklists, repeated summaries and unsupported precision. Move necessary detail into clearly named supporting sections, keeping decisive qualifications beside the conclusion.
 
-Build your own causal assessment from the evidence. Analyst targets, consensus forecasts and investment narratives can provide context about expectations, but must not supply the underlying thesis or valuation by default. Attribute management's market-size estimates and forecasts as claims, and test them against independent evidence. Primary sources can also be incomplete or self-interested.
+Start with one descriptive title, then prepared date, information cutoff, price date and horizon. Before the first section heading, declare **Report role:** Independent FA, **Research query:**, **Research brief:** and **Model / agent:**. Use Not recorded for unknown provenance; never claim independence you cannot establish.
 
-## Establish a compact factual starting point
+Include a compact `## Decision brief` using the reader's exact labels:
 
-Cover the following foundations to the extent they matter. Choose the order and emphasis that best explain the subject. Combine related items, expand decisive issues, and explain material omissions. Do not fill space with irrelevant macro statistics or force industrial-company metrics onto banks, insurers or other unsuitable businesses.
+- **Working judgment:** conclusion, main reason and strongest qualification.
+- **Variant view:** the specific, supported difference from market expectations.
+- **Price hurdle:** dated valuation, required economics and path to the stated return hurdle.
+- **Failure condition:** observable invalidation or permanent-loss mechanism.
+- **Next check:** the uncertainty most likely to change the decision.
 
-**Business and economic mechanism.** Establish what is sold, who pays, why customers buy, how revenue and cash are generated, and the major segments, customers, geographies and dependencies. For a macro or industry question, establish the demand mechanism, value chain and competing ways to serve the need.
+Use Not established or Not applicable with a reason where appropriate. Author these as labeled paragraphs under the decision heading, not list items. Do not leave placeholders in the report.
 
-**TAM and addressable economics.** Define the market boundary, geography, units, currency, base year and measurement period. Distinguish today's actual market from an estimated future TAM and from the portion this business can realistically serve and win. Prefer transparent bottom-up estimates where feasible: customers or deployments × adoption × annual spending or content. Identify overlap, substitution, pricing, capacity and affordability constraints. Do not add overlapping TAMs or equate total spending with supplier revenue or shareholder profit. If reliable sizing is unavailable, explain what can be bounded and what remains unknown.
+Use short paragraphs, descriptive headings and selective `[!THESIS]`, `[!EVIDENCE]`, `[!INFERENCE]`, `[!RISK]` or `[!QUESTION]` callouts as documented in AGENTS.md. Prefer a compact causal chain and a few purposeful three- or four-column tables, such as bottleneck / capture mechanism / erosion risk, or scenario / economic drivers / per-share outcome. Label units, periods and accounting bases; explain each major table's implication and limitation. Use short fenced `text` calculations when clearer than prose. Avoid wide code blocks, raw HTML and unsupported chart syntax.
 
-**Macro snapshot.** Select the conditions with a plausible transmission into this thesis: rates, credit availability and spreads, inflation, currencies, liquidity, fiscal policy, trade restrictions, investment cycles or other relevant forces. Show the dated observation, its direction of change and the mechanism through which it affects demand, costs, financing, valuation or failure risk. Distinguish the current regime from forecasts and alternative regimes.
+Finish with specific open questions and a concise verification scope. Preserve dated, testable expectations and their invalidation conditions so later research can compare outcomes with what was actually expected.
 
-**Industry growth and potential.** Separate observed growth from projected growth; distinguish volume, price, mix and market-share effects. Give each growth rate its base, time window and source, and distinguish nominal from real growth when material. Assess adoption, replacement cycles, customer returns, supply response, competition, regulation, substitution and saturation. Describe industry potential as conditional on explicit drivers, supported by facts about demand and supply. Examine credible paths to slower growth or weaker economics. Industry expansion, company profit growth and stock returns require separate arguments.
+## Save and hand off
 
-**Debt, commitments and financing costs.** Where applicable, establish gross debt, unrestricted cash, net debt, leases, maturities, fixed/floating exposure, currencies, covenants and liquidity. Examine material guarantees, purchase commitments, vendor/customer financing, contingent liabilities and other obligations without mechanically double-counting overlapping exposures. Explain interest expense, debt service and coverage using clearly defined financial measures. Distinguish reported historical financing cost, contractual borrowing terms and estimated refinancing cost. Show sensitivity to rates, earnings or cash-flow stress when material. Use a cost of capital only when the valuation needs it, with transparent assumptions. For financial institutions, use relevant funding, liquidity and regulatory-capital measures.
+Save the complete Markdown report separately from peer reports. Reread any existing target and reconcile intervening edits before saving. Preserve actual revision history; never fabricate earlier snapshots. Follow AGENTS.md for substantive continuation changes and `## What changed` entries.
 
-**Financial and valuation baseline.** Establish the most decision-relevant reported revenue, profitability, cash conversion, reinvestment, working capital, dilution and per-share economics. Label fiscal periods, currencies, GAAP/IFRS versus adjusted figures, completed years versus run rates, and restricted versus available resources. Use a sourced, dated price when discussing market valuation. Normalize the basis before comparing companies; do not silently combine incomparable periods or accounting definitions.
-
-For material figures, provide a direct source, date/period, unit and definition close to the claim. Label estimates and calculations, show their important inputs, and keep uncertainty beside the result. A compact table can help when values are genuinely comparable. Missing evidence is an open question, never a fabricated number.
-
-## Develop the analysis freely
-
-Use the factual starting point to discover the questions worth pursuing. Follow the causal chain from macro or structural change through customer behavior, industry constraints, competitive response and retained per-share cash. Investigate second-order effects and moving bottlenecks where the evidence supports them.
-
-Identify what would need to be true for the opportunity to work, which assumptions carry the conclusion, and what observations would contradict them. Separate a strong business, an attractive industry, a research priority and an attractively priced security. State the specific variant view, if one is supported; explain how you inferred market expectations rather than merely declaring the market wrong.
-
-When valuation or scenarios help, derive outcomes from operating drivers, financing, reinvestment and dilution. Justify valuation ranges, test absolute scale, and distinguish conditional arithmetic from forecasts. Examine downside, permanent impairment, timing, liquidity and correlated exposures alongside potential upside. Do not invent probabilities, confidence scores or precise expected returns unsupported by evidence. A return hurdle tests the opportunity; it is not a reason to force assumptions to meet it. A conclusion of no sufficiently supported opportunity is useful.
-
-You may pursue a different analytical route if it better answers the question. Explain the reason. These foundations provide context and discipline; they do not prescribe a bullish, bearish or security-specific answer.
-
-## Deliver a readable Markdown report
-
-Present a concise summary before the full analysis. A useful default sequence is: title and dates → qualified central judgment and summary → compact factual starting point → full report → open questions and verification scope. Adapt the arrangement when it improves understanding, while keeping the main judgment and its strongest qualification near the top.
-
-Use one descriptive # title and distinguish prepared date, information cutoff, price date and investment horizon. Explain what matters, why it matters, the strongest contrary evidence and what remains unestablished. Keep the summary self-contained and brief enough to scan; let the full report carry the supporting reasoning.
-
-Choose the Markdown elements that make the reasoning clearest: descriptive ## / ### headings, short paragraphs, selective emphasis, focused lists, direct source links and compact comparison tables. FA can render these optional callouts:
-
-> [!THESIS]
-> Working judgment and essential qualification.
-
-> [!EVIDENCE]
-> Dated, attributed observation and source.
-
-> [!INFERENCE]
-> Reasoning that follows, with its assumptions.
-
-> [!RISK]
-> Failure path or strongest limitation.
-
-> [!QUESTION]
-> Unresolved question and the next useful check.
-
-Use callouts selectively. Use standard Markdown that the current reader supports; avoid depending on raw HTML or unsupported chart syntax. Supporting detail can live in clearly named later sections or appendices. Keep material caveats and sources intact, and avoid repeating the same explanation across sections.
-
-Where useful, include an explicitly authored ## Decision brief with these paragraph labels: **Working judgment:**, **Variant view:**, **Price hurdle:**, **Failure condition:** and **Next check:**. FA can surface these fields. Write Not established or Not applicable with a reason where appropriate. They should summarize your analysis, not dictate it.
-
-## Make this the next conversation's starting point
-
-Save the complete initial report as authoritative Markdown. Keep it self-contained enough for a future agent to understand the business or mechanism, the current thesis, material assumptions, key sources and unresolved checks without reconstructing the chat.
-
-For later continuation conversations, read the latest canonical Super Report first when one is designated; otherwise use the explicitly selected report. Answer the new question in its context and integrate substantive findings into the appropriate sections of that same file. Re-explain established background only when it has changed or is needed to resolve the new question. Keep the report coherent as the investigation grows; avoid appending every conversational reply as another essay. An explicit new Independent FA request starts a separate perspective with the independence boundary restored.
-
-For substantive revisions, add a dated ## What changed entry explaining the new evidence, changed assumptions or judgment, and the reason. Keep research dates separate from save/observation timestamps. Update applicable cutoff and price dates explicitly when refreshed evidence is incorporated, recording the previous basis and reason in What changed. Preserve earlier versions using the workspace's actual revision mechanism; do not fabricate earlier history or edit ledger snapshots manually. Reread the file before saving and use hash/revision conflict checks where available.
-
-Keep the terminal response concise: link the saved report, state the principal finding or what changed, identify the main qualification, and name the next decisive check. The full analysis belongs in the report. On the initial run, complete the research and create its first usable version, rather than returning only a plan.
+Future multi-report synthesis uses `app/prompts/synthesize-fa.md`; do not perform it during independent research. Keep the terminal response to the file link and four brief points: principal discovery, thesis implication, strongest uncertainty and next decisive check. Complete the research and save the report, rather than returning only a plan.

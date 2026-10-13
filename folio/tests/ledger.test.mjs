@@ -37,6 +37,16 @@ test('local ledger discovers files, persists revisions and protects edits', asyn
   const researchAsset=await fetch(base+'/research.js');
   assert.equal(researchAsset.status,200);assert.match(researchAsset.headers.get('content-type'),/^text\/javascript/);
   assert.match(await researchAsset.text(),/FAResearch/);
+  const catalogResponse=await fetch(base+'/prompts/catalog.json');
+  assert.match(catalogResponse.headers.get('content-type'),/^application\/json/);
+  const catalog=await catalogResponse.json();assert.equal(catalog.prompts.length,2);
+  for(const prompt of catalog.prompts){
+    const response=await fetch(base+'/prompts/'+prompt.file);assert.equal(response.status,200);
+    assert.match(response.headers.get('content-type'),/^text\/markdown/);
+    assert.equal(await response.text(),await fs.readFile(new URL('../app/prompts/'+prompt.file,import.meta.url),'utf8'));
+  }
+  assert.equal((await fetch(base+'/prompt-menu.js')).status,200);
+  assert.equal((await fetch(base+'/prompts/unlisted.md')).status,404);
   const minimapAsset=await fetch(base+'/minimap.js');
   assert.equal(minimapAsset.status,200);assert.match(await minimapAsset.text(),/FAMinimap/);
   const report=await (await fetch(base+'/api/report?path=Reports%2Finitial.md')).json();

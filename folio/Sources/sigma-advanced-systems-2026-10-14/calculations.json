@@ -1,0 +1,79 @@
+{
+  "reference_price_inr": "961.70",
+  "reference_price_date": "2026-10-12",
+  "shares_crore": "18.9928952",
+  "equity_value_inr_crore": "18265.467313840",
+  "hurdles": [
+    {
+      "terminal_PE": 25,
+      "required_EPS_inr": "76.936",
+      "required_parent_PAT_inr_crore": "1461.2373851072",
+      "revenue_at_12pct_net_margin": "12176.97820922666666666666667",
+      "revenue_at_15pct_net_margin": "9741.582567381333333333333333"
+    },
+    {
+      "terminal_PE": 35,
+      "required_EPS_inr": "54.95428571428571428571428571",
+      "required_parent_PAT_inr_crore": "1043.740989362285714285714286",
+      "revenue_at_12pct_net_margin": "8697.84157801904761904761905",
+      "revenue_at_15pct_net_margin": "6958.27326241523809523809524"
+    },
+    {
+      "terminal_PE": 45,
+      "required_EPS_inr": "42.74222222222222222222222222",
+      "required_parent_PAT_inr_crore": "811.7985472817777777777777777",
+      "revenue_at_12pct_net_margin": "6764.987894014814814814814814",
+      "revenue_at_15pct_net_margin": "5411.990315211851851851851851"
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Stalled transfer",
+      "revenue": 2000,
+      "EBITDA_margin": ".16",
+      "EBITDA": "320.00",
+      "depreciation": 60,
+      "interest": 45,
+      "tax_rate": ".25",
+      "minority_PAT": 10,
+      "group_PAT": "161.2500",
+      "parent_PAT": "151.2500",
+      "EPS": "7.963504163388423266822427367",
+      "terminal_PE": 25,
+      "terminal_price": "199.0876040847105816705606842",
+      "investment_multiple": "0.2070163295047422082463977168"
+    },
+    {
+      "name": "Strong execution",
+      "revenue": 4000,
+      "EBITDA_margin": ".23",
+      "EBITDA": "920.00",
+      "depreciation": 100,
+      "interest": 50,
+      "tax_rate": ".25",
+      "minority_PAT": 30,
+      "group_PAT": "577.5000",
+      "parent_PAT": "547.5000",
+      "EPS": "28.82656878978619331296052221",
+      "terminal_PE": 35,
+      "terminal_price": "1008.929907642516765953618277",
+      "investment_multiple": "1.049110853324858860303232065"
+    },
+    {
+      "name": "Hurdle-scale execution",
+      "revenue": 6500,
+      "EBITDA_margin": ".26",
+      "EBITDA": "1690.00",
+      "depreciation": 150,
+      "interest": 60,
+      "tax_rate": ".25",
+      "minority_PAT": 100,
+      "group_PAT": "1110.0000",
+      "parent_PAT": "1010.0000",
+      "EPS": "53.17777986791608264126050672",
+      "terminal_PE": 40,
+      "terminal_price": "2127.111194716643305650420269",
+      "investment_multiple": "2.211824056063890304305313787"
+    }
+  ]
+}
